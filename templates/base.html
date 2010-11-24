@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{% block title %}Nomblr{% endblock %}</title>
+</head>
+<body>
+<header>
+	<h1><a href="/">Nomblr</a></h1>
+	<ul>
+	</ul>
+</header>
+{% block content %}{% endblock %}
+<footer>
+	<p>
+	{% if request.user.is_authenticated %}
+		<strong>{{ request.user }}</strong>
+		<a href="/logout/">Logout</a>
+	{% else %}
+		<a href="/login/">Login</a>
+	{% endif %}
+	</p>
+</footer>
+</body>
+</html>
