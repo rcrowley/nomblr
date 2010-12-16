@@ -11,6 +11,8 @@ urlpatterns = patterns('',
     (r'^admin/docs/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 
-    (r'', include('nomblr.core.urls')),
+    (r'^recipes/', include('nomblr.recipes.urls')),
+
+    (r'^$', 'nomblr.views.index'),
 
 )

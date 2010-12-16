@@ -58,7 +58,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'nomblr.core',
 )
 
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
