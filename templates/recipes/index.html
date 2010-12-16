@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<nav>
-	<h1>Recipes</h1>
-	<ul>
-	{% for recipe in recipes %}
-		<li>{{ recipe }}</li>
-	{% endfor %}
-	</ul>
-</nav>
+	<nav>
+		<h1>Recipes</h1>
+		<ul>
+		{% for recipe in recipes %}
+			<li>{{ recipe }}</li>
+		{% endfor %}
+		</ul>
+	</nav>
 {% endblock %}
