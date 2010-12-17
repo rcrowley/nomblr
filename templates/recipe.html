@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
+{% load mdown %}
+
 {% block content %}
 	<article>
 		<h1>{{ recipe.name }}</h1>
+		{{ recipe.text|mdown }}
 	</article>
 {% endblock %}
