@@ -58,7 +58,22 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'nomblr',
+    'nomblr.recipes',
 )
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
+
+USERNAME_BLACKLIST = (
+    'account',
+    'admin',
+    'api',
+    'blog',
+    'friends',
+    'help',
+    'invite',
+    'login',
+    'logout',
+    'signup',
+)

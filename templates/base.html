@@ -7,19 +7,27 @@
 <body>
 <header>
 	<h1><a href="/">Nomblr</a></h1>
-	<ul>
-	</ul>
+	{% if request.user.is_authenticated %}
+		<ul>
+			<li><a href="/">Add a nom</a></li>
+			<li><a href="/{{ request.user }}/">My noms</a></li>
+			<li><a href="/friends/">Friends</a></li>
+		</ul>
+		<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}"></form>
+	{% endif %}
 </header>
 {% block content %}{% endblock %}
 <footer>
-	<p>
+	<ul>
 	{% if request.user.is_authenticated %}
-		<strong>{{ request.user }}</strong>
-		<a href="/logout/">Logout</a>
+		<li><strong>{{ request.user }}</strong></li>
+		<li><a href="/logout/">Logout</a></li>
 	{% else %}
-		<a href="/login/">Login</a>
+		<li><a href="/login/">Login</a></li>
+		<li><a href="/signup/">Signup</a></li>
 	{% endif %}
-	</p>
+	</ul>
+	<p>Nomblr is lovingly baked to perfection by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
 </footer>
 </body>
 </html>
