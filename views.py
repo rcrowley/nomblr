@@ -1,9 +1,11 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 
 import forms
 
+@login_required
 def index(request):
     """
     The homepage is a workhorse.  Requested via GET with no parameters,
