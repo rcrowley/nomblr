@@ -2,10 +2,14 @@
 
 {% block content %}
 	<nav>
-		<h1>Recipes</h1>
+		{% if owner %}
+			<h1><strong>{{ owner }}</strong>&#8217;s recipes</h1>
+		{% else %}
+			<h1>Recipes</h1>
+		{% endif %}
 		<ul>
 		{% for recipe in recipes %}
-			<li>{{ recipe }}</li>
+			<li><a href="{{ recipe.slug }}/">{{ recipe }}</a></li>
 		{% endfor %}
 		</ul>
 	</nav>
