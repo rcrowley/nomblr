@@ -5,6 +5,7 @@ from django.template import RequestContext
 import haystack.forms
 
 import forms
+import recipes.forms
 
 @login_required
 def index(request):
@@ -14,7 +15,11 @@ def index(request):
     it searches recipes.  Requested via POST, it saves a recipe.
     """
     if 'POST' == request.method:
-        pass
+        form = recipes.forms.RecipeForm(request.user, request.POST)
+        if form.is_valid():
+            recipe = form.save()
+            #return redirect(recipe.get_absolute_url())
+            return redirect(recipe)
     elif 'q' in request.GET:
         form = haystack.forms.SearchForm(request.GET)
         if form.is_valid():
@@ -25,7 +30,9 @@ def index(request):
                                   {'form': form,
                                    'results': results},
                                   context_instance=RequestContext(request))
+    form = recipes.forms.RecipeForm(request.user)
     return render_to_response('index.html',
+                              {'form': form},
                               context_instance=RequestContext(request))
 
 def signup(request):

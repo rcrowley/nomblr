@@ -3,5 +3,10 @@
 {% block content %}
 	<section>
 		<h1>Nom</h1>
+		<form action="/" method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<p><input type="submit" value="Save"></p>
+		</form>
 	</section>
 {% endblock %}
