@@ -4,7 +4,7 @@ from haystack import site
 
 import models
 
-class Recipe(indexes.SearchIndex):
+class RecipeIndex(indexes.SearchIndex):
     owner = indexes.CharField(model_attr='owner')
     slug = indexes.CharField(model_attr='slug', indexed=False)
     name = indexes.CharField(model_attr='name')
@@ -13,4 +13,4 @@ class Recipe(indexes.SearchIndex):
     def get_queryset(self):
         return models.Recipe.objects.all()
 
-site.register(models.Recipe, Recipe)
+site.register(models.Recipe, RecipeIndex)

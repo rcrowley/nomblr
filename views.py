@@ -30,7 +30,7 @@ def index(request):
 
 def signup(request):
     if 'POST' == request.method:
-        form = forms.Signup(request.POST)
+        form = forms.SignupForm(request.POST)
         if form.is_valid():
             form.save()
             user = authenticate(username=form.cleaned_data['username'],
@@ -38,7 +38,7 @@ def signup(request):
             login(request, user)
             return redirect('/')
     else:
-        form = forms.Signup()
+        form = forms.SignupForm()
     return render_to_response('signup.html',
                               {'form': form},
                               context_instance=RequestContext(request))
