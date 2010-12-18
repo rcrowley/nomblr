@@ -17,7 +17,7 @@ class Recipe(models.Model):
         return unicode(self.name)
 
     def get_absolute_url(self):
-        return '/{username}/{slug}/'.format(**self.__dict__)
+        return '/{0}/{1}/'.format(self.owner, self.slug)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
