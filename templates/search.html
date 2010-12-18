@@ -2,10 +2,10 @@
 
 {% block content %}
 	<nav>
-		<h1>Results for &#8220;{{ form.cleaned_data.q }}&#8221;</h1>
+		<h1>Noms like &#8220;{{ form.cleaned_data.q }}&#8221;</h1>
 		<ol>
 		{% for result in results %}
-			<li><a href="/{{ result.owner }}/{{ result.slug }}/">{{ result.name }}</a> {{ result.text|truncatewords:"20" }}</li>
+			<li><a href="/{{ result.owner }}/{{ result.slug }}/">{{ result.name }}</a></li>
 		{% endfor %}
 		</ol>
 	</nav>
