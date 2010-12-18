@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
+import haystack.forms
 
 import forms
 
@@ -15,14 +16,16 @@ def index(request):
     if 'POST' == request.method:
         pass
     elif 'q' in request.GET:
-        form = forms.Search()
+        form = haystack.forms.SearchForm(request.GET)
+        if form.is_valid():
+            results = form.search().filter(owner=request.user)
+        else:
+            results = []
         return render_to_response('search.html',
-                                  {'form': form},
+                                  {'form': form,
+                                   'results': results},
                                   context_instance=RequestContext(request))
-    else:
-        form = forms.Search()
     return render_to_response('index.html',
-                              {'form': form},
                               context_instance=RequestContext(request))
 
 def signup(request):
@@ -32,8 +35,6 @@ def signup(request):
             form.save()
             user = authenticate(username=form.cleaned_data['username'],
                                 password=form.cleaned_data['password1'])
-            print(type(user))
-            print(user)
             login(request, user)
             return redirect('/')
     else:

@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'haystack',
     'nomblr',
     'nomblr.recipes',
 )
@@ -77,3 +78,7 @@ USERNAME_BLACKLIST = (
     'logout',
     'signup',
 )
+
+HAYSTACK_SITECONF = 'nomblr.search_site'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = 'nomblr.index'

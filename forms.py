@@ -1,18 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 
-class Search(forms.Form):
-    q = forms.CharField(label='Search')
-
 class Signup(forms.ModelForm):
     """
     Signup, taken mostly from django.contrib.auth.forms.UserCreationForm.
     """
-
-    class Meta(object):
-        model = User
-        fields = ('email', 'username', 'password1', 'password2')
-
     email = forms.EmailField(label='Email')
     username = forms.RegexField(label='Username',
                                 max_length=30,
@@ -22,6 +14,10 @@ class Signup(forms.ModelForm):
                                 widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password',
                                 widget=forms.PasswordInput)
+
+    class Meta(object):
+        model = User
+        fields = ('email', 'username', 'password1', 'password2')
 
     def clean_email(self):
         email = self.cleaned_data['email']

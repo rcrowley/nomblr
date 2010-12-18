@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     (r'^logout/$', 'django.contrib.auth.views.logout',
      {'template_name': 'logged_out.html'}),
 
+    # It's important username-based routes follow specific routes.
     (r'^(?P<username>[^/]+)/$', 'nomblr.recipes.views.recipes'),
     (r'^(?P<username>[^/]+)/(?P<slug>[^/]+)/$', 'nomblr.recipes.views.recipe'),
 
