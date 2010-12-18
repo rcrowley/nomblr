@@ -13,7 +13,7 @@
 			<li><a href="/{{ request.user }}/">My noms</a></li>
 			<li><a href="/friends/">Friends</a></li>
 		</ul>
-		<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}"></form>
+		<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Nom search"></form>
 	{% endif %}
 </header>
 {% block content %}{% endblock %}
