@@ -6,5 +6,17 @@
 	<article>
 		<h1>{{ recipe.name }}</h1>
 		{{ recipe.text|mdown }}
+		{% if recipe.owner == request.user %}
+			<footer>
+				<ul>
+					<li><a href="#" onclick="document.getElementById('edit').style.display = ''; return false;">Edit</a></li>
+				</ul>
+			</footer>
+			<form id="edit" action="/{{ recipe.owner }}/{{ recipe.slug }}/" method="POST" style="display: none;">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<p><input type="submit" value="Save"> or <a href="#" onclick="document.getElementById('edit').style.display = 'none'; return false;">cancel</a></p>
+			</form>
+		{% endif %}
 	</article>
 {% endblock %}

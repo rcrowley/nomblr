@@ -18,7 +18,6 @@ def index(request):
         form = recipes.forms.RecipeForm(request.user, request.POST)
         if form.is_valid():
             recipe = form.save()
-            #return redirect(recipe.get_absolute_url())
             return redirect(recipe)
     elif 'q' in request.GET:
         form = haystack.forms.SearchForm(request.GET)
