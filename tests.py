@@ -105,10 +105,10 @@ def test_GET_empty_search():
 def test_POST_index():
     c = Client()
     c.login(username='tester', password='password')
-    response = c.post('/', {'name': 'Test recipe',
-                     'text': 'Test ingredients and directions.'})
+    response = c.post('/', {'name': 'Another test',
+                            'text': 'Test ingredients and directions.'})
     assert 302 == response.status_code
-    assert 'http://testserver/tester/test-recipe/' == response['Location']
+    assert 'http://testserver/tester/another-test/' == response['Location']
 
 def test_POST_invalid_index():
     c = Client()
