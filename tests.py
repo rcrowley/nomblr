@@ -3,21 +3,21 @@ from django.test import Client
 import forms
 import views
 
-def test_valid():
+def test_SignupForm_valid():
     form = forms.SignupForm({'email': 'test@nomblr.com',
                              'username': 'test',
                              'password1': 'password',
                              'password2': 'password'})
     assert form.is_valid()
 
-def test_missing_email():
+def test_SignupForm_missing_email():
     form = forms.SignupForm({'username': 'test',
                              'password1': 'password',
                              'password2': 'password'})
     assert not form.is_valid()
     assert 'email' in form.errors
 
-def test_invalid_email():
+def test_SignupForm_invalid_email():
     form = forms.SignupForm({'email': 'invalid email',
                              'username': 'test',
                              'password1': 'password',
@@ -25,14 +25,14 @@ def test_invalid_email():
     assert not form.is_valid()
     assert 'email' in form.errors
 
-def test_missing_username():
+def test_SignupForm_missing_username():
     form = forms.SignupForm({'email': 'test@nomblr.com',
                              'password1': 'password',
                              'password2': 'password'})
     assert not form.is_valid()
     assert 'username' in form.errors
 
-def test_invalid_username():
+def test_SignupForm_invalid_username():
     form = forms.SignupForm({'email': 'test@nomblr.com',
                              'username': 'invalid username',
                              'password1': 'password',
@@ -40,7 +40,7 @@ def test_invalid_username():
     assert not form.is_valid()
     assert 'username' in form.errors
 
-def test_long_username():
+def test_SignupForm_long_username():
     form = forms.SignupForm({'email': 'test@nomblr.com',
                              'username': 'test_test_test_test_test_test_test',
                              'password1': 'password',
@@ -48,7 +48,7 @@ def test_long_username():
     assert not form.is_valid()
     assert 'username' in form.errors
 
-def test_short_username():
+def test_SignupForm_short_username():
     form = forms.SignupForm({'email': 'test@nomblr.com',
                              'username': 't',
                              'password1': 'password',
@@ -56,21 +56,21 @@ def test_short_username():
     assert not form.is_valid()
     assert 'username' in form.errors
 
-def test_missing_password1():
+def test_SignupForm_missing_password1():
     form = forms.SignupForm({'email': 'test@nomblr.com',
                              'username': 'test',
                              'password2': 'password'})
     assert not form.is_valid()
     assert 'password1' in form.errors
 
-def test_missing_password2():
+def test_SignupForm_missing_password2():
     form = forms.SignupForm({'email': 'test@nomblr.com',
                              'username': 'test',
                              'password1': 'password'})
     assert not form.is_valid()
     assert 'password2' in form.errors
 
-def test_mismatch_password():
+def test_SignupForm_mismatch_password():
     form = forms.SignupForm({'email': 'test@nomblr.com',
                              'username': 'test',
                              'password1': 'password1',
@@ -106,7 +106,7 @@ def test_POST_index():
     c = Client()
     c.login(username='tester', password='password')
     response = c.post('/', {'name': 'Test recipe',
-                     'text': 'Test recipe ingredients and directions.'})
+                     'text': 'Test ingredients and directions.'})
     assert 302 == response.status_code
     assert 'http://testserver/tester/test-recipe/' == response['Location']
 
