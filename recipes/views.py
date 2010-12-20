@@ -29,7 +29,8 @@ def recipe(request, username, slug):
         form = forms.RecipeForm(request.user, request.POST, instance=recipe)
         if form.is_valid():
             recipe = form.save()
-    form = forms.RecipeForm(request.user, instance=recipe)
+    else:
+        form = forms.RecipeForm(request.user, instance=recipe)
     return render_to_response('recipe.html',
                               {'form': form,
                                'recipe': recipe},
