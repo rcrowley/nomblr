@@ -14,12 +14,7 @@ def index(request):
     it is a simple navigation page.  Requested via GET with parameters,
     it searches recipes.  Requested via POST, it saves a recipe.
     """
-    if 'POST' == request.method:
-        form = recipes.forms.RecipeForm(request.user, request.POST)
-        if form.is_valid():
-            recipe = form.save()
-            return redirect(recipe)
-    elif 'q' in request.GET:
+    if 'GET' == request.method and 'q' in request.GET:
         form = haystack.forms.SearchForm(request.GET)
         if form.is_valid():
             results = form.search().filter(owner=request.user)
@@ -29,7 +24,13 @@ def index(request):
                                   {'form': form,
                                    'results': results},
                                   context_instance=RequestContext(request))
-    form = recipes.forms.RecipeForm(request.user)
+    elif 'POST' == request.method:
+        form = recipes.forms.RecipeForm(request.user, request.POST)
+        if form.is_valid():
+            recipe = form.save()
+            return redirect(recipe)
+    else:
+        form = recipes.forms.RecipeForm(request.user)
     return render_to_response('index.html',
                               {'form': form},
                               context_instance=RequestContext(request))
