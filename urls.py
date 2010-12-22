@@ -25,6 +25,15 @@ urlpatterns = patterns('',
      'django.contrib.auth.views.password_reset_complete',
      {'template_name': 'password_reset_complete.html'}),
 
+    (r'^account/$', 'nomblr.account.views.account'),
+    (r'^account/email/$', 'nomblr.account.views.email'),
+    (r'^account/password/$', 'django.contrib.auth.views.password_change',
+     {'template_name': 'password_change_form.html'}),
+    (r'^account/password/done/$',
+     'django.contrib.auth.views.password_change_done',
+     {'template_name': 'password_change_done.html'}),
+    (r'^account/username/$', 'nomblr.account.views.username'),
+
     # It's important username-based routes follow specific routes.
     (r'^(?P<username>[^/]+)/$', 'nomblr.recipes.views.recipes'),
     (r'^(?P<username>[^/]+)/(?P<slug>[^/]+)/$', 'nomblr.recipes.views.recipe'),
