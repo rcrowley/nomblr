@@ -4,7 +4,7 @@ from haystack import site
 
 import models
 
-class RecipeIndex(indexes.SearchIndex):
+class RecipeIndex(indexes.RealTimeSearchIndex):
     owner = indexes.CharField(model_attr='owner')
     slug = indexes.CharField(model_attr='slug', indexed=False)
     name = indexes.CharField(model_attr='name')

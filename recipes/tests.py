@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import connection
 from django.db import IntegrityError
 from django.test import Client
+import haystack.forms
 
 import forms
 import models
@@ -50,7 +51,12 @@ def test_Recipe_create():
 
 # TODO Test models further.
 
-# TODO Test search_indexes.
+def test_RecipeIndex_signalled():
+    form = haystack.forms.SearchForm({'q': 'ingredients'})
+    assert form.is_valid()
+    user = User.objects.get(username='tester')
+    results = form.search().filter(owner=user)
+    assert 1 == len(results)
 
 def test_mdown():
     assert '<ul>\n<li>foo</li>\n</ul>\n<ol>\n<li>bar</li>\n</ol>' \
