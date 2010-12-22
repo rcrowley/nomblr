@@ -72,12 +72,17 @@ USERNAME_BLACKLIST = (
     'admin',
     'api',
     'blog',
+    'forgot',
     'friends',
     'help',
     'invite',
     'login',
     'logout',
+    'me',
+    'mine',
+    'settings',
     'signup',
+    'you',
 )
 
 HAYSTACK_SITECONF = 'nomblr.search_site'
