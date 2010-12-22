@@ -59,8 +59,17 @@ def test_RecipeIndex_signalled():
     assert 1 == len(results)
 
 def test_mdown():
-    assert '<ul>\n<li>foo</li>\n</ul>\n<ol>\n<li>bar</li>\n</ol>' \
-        == templatetags.mdown.mdown('* foo\n\n1. bar')
+    assert """<ul>
+<li>
+<p>foo</p>
+</li>
+<li>
+<p>bar</p>
+</li>
+</ul>
+<ol>
+<li>baz</li>
+</ol>""" == templatetags.mdown.mdown('* foo\n\n* bar\n\n1. baz')
 
 def test_GET_recipes():
     c = Client()
