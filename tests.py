@@ -137,3 +137,15 @@ def test_POST_invalid_signup():
                             'password1': 'password1',
                             'password2': 'password2'})
     assert 200 == response.status_code
+
+def test_GET_logout():
+    c = Client()
+    c.login(username='tester', password='password')
+    response = c.get('/logout/')
+    assert 405 == response.status_code
+
+def test_POST_logout():
+    c = Client()
+    c.login(username='tester', password='password')
+    response = c.post('/logout/')
+    assert 200 == response.status_code

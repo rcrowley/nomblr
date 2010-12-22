@@ -12,7 +12,7 @@
 					<li><a href="#" onclick="document.getElementById('edit').style.display = ''; return false;">Edit</a></li>
 				</ul>
 			</footer>
-			<form id="edit" action="/{{ recipe.owner }}/{{ recipe.slug }}/" method="POST"{% if form.is_valid %} style="display: none;"{% endif %}>
+			<form id="edit" action="/{{ recipe.owner }}/{{ recipe.slug }}/" method="POST"{% if not form.is_bound %} style="display: none;"{% endif %}>
 				{% csrf_token %}
 				{{ form.as_p }}
 				<p><input type="submit" value="Save"> or <a href="#" onclick="document.getElementById('edit').style.display = 'none'; return false;">cancel</a></p>

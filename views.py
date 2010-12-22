@@ -1,5 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views
+from django.http import HttpResponseNotAllowed
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 import haystack.forms
@@ -49,3 +51,8 @@ def signup(request):
     return render_to_response('signup.html',
                               {'form': form},
                               context_instance=RequestContext(request))
+
+def logout(request, *args, **kwargs):
+    if 'POST' == request.method:
+        return views.logout(request, *args, **kwargs)
+    return HttpResponseNotAllowed(['POST'])
