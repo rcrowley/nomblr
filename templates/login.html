@@ -2,10 +2,13 @@
 
 {% block content %}
 	<section>
-		<form action="/login/" method="post">
+		<form action="/login/" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
 			<p><input type="submit" value="Login"></p>
 		</form>
+		<ul>
+			<li><a href="/forgot/">Forgot your password?</a></li>
+		</ul>
 	</section>
 {% endblock %}

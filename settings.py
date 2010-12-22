@@ -90,3 +90,6 @@ HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = 'nomblr.index'
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+DEFAULT_FROM_EMAIL = 'noreply@nomblr.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
