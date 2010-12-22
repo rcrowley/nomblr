@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 
 import forms
@@ -29,6 +29,8 @@ def recipe(request, username, slug):
         form = forms.RecipeForm(request.user, request.POST, instance=recipe)
         if form.is_valid():
             recipe = form.save()
+            if slug != recipe.slug:
+                return redirect(recipe)
     else:
         form = forms.RecipeForm(request.user, instance=recipe)
     return render_to_response('recipe.html',

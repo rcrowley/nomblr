@@ -110,3 +110,12 @@ def test_POST_invalid_recipe():
     c.login(username='tester', password='password')
     response = c.post('/tester/foo-bar/', {'name': 'Foo bar'})
     assert 200 == response.status_code
+
+def test_POST_recipe_rename():
+    c = Client()
+    c.login(username='tester', password='password')
+    response = c.post('/tester/foo-bar/',
+                      {'name': 'Foo bar baz',
+                       'text': '* foo\n* bar\n\n1. baz\n1. bang'})
+    assert 302 == response.status_code
+    assert 'http://testserver/tester/foo-bar-baz/' == response['Location']
