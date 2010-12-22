@@ -49,10 +49,10 @@ def test_Recipe_create():
     except IntegrityError:
         assert True
 
-# TODO Test models further.
+# TODO Test models further.  Editing, for example.
 
 def test_RecipeIndex_signalled():
-    form = haystack.forms.SearchForm({'q': 'ingredients'})
+    form = haystack.forms.SearchForm({'q': 'Test recipe'})
     assert form.is_valid()
     user = User.objects.get(username='tester')
     results = form.search().filter(owner=user)
