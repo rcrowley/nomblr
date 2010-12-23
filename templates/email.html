@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<section>
+		<h1>Change your email address</h1>
+		<form method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<p><input type="submit" value="Change"></p>
+		</form>
+	</section>
+{% endblock %}
