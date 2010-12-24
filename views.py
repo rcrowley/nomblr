@@ -52,6 +52,7 @@ def signup(request):
                               {'form': form},
                               context_instance=RequestContext(request))
 
+@login_required
 def logout(request, *args, **kwargs):
     if 'POST' == request.method:
         return views.logout(request, *args, **kwargs)

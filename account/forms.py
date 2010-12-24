@@ -1,5 +1,9 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth.models import User
+from django.template import Context, loader
+import hashlib
+import hmac
 
 class EmailForm(forms.ModelForm):
     email = forms.EmailField(label='Email')
@@ -17,7 +21,21 @@ class EmailForm(forms.ModelForm):
         raise forms.ValidationError('{0} already exists.'.format(email))
 
     def save(self, commit=True):
+        """
+        Send an email address confirmation, too.
+        """
         user = super(EmailForm, self).save(commit=False)
+        t = loader.get_template('email_confirmation.txt')
+        from django.core.mail import send_mail
+        send_mail('Confirm your email address on Nomblr',
+                  t.render(Context({'email': user.email,
+                                    'user': user,
+                                    'token': hmac.new(
+                                        settings.SECRET_KEY,
+                                        user.email,
+                                        hashlib.sha1).hexdigest()})),
+                  settings.DEFAULT_FROM_EMAIL,
+                  [user.email])
         if commit:
             user.save()
         return user

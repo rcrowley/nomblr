@@ -1,0 +1,7 @@
+Please confirm your email address with Nomblr by visiting the page linked below.
+
+http://nomblr.com/account/email/{{ token }}/
+
+Your username, in case you've forgotten, is {{ user.username }}.
+
+Thanks for using Nomblr!

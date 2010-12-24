@@ -64,6 +64,8 @@ def test_GET_username():
 def test_POST_username():
     c = Client()
     c.login(username='tester', password='password')
+    response = c.post('/account/username/', {'username': 'different'})
+    assert 200 == response.status_code
     response = c.post('/account/username/', {'username': 'tester'})
     assert 200 == response.status_code
 

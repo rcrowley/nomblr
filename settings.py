@@ -72,7 +72,6 @@ USERNAME_BLACKLIST = (
     'admin',
     'api',
     'blog',
-    'forgot',
     'friends',
     'help',
     'invite',
@@ -91,5 +90,5 @@ HAYSTACK_WHOOSH_PATH = 'nomblr.index'
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-DEFAULT_FROM_EMAIL = 'noreply@nomblr.com'
+DEFAULT_FROM_EMAIL = 'Nomblr <noreply@nomblr.com>'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
