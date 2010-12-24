@@ -4,6 +4,7 @@
 		"pk": 1,
 		"fields": {
 			"username": "tester",
+			"email": "tester@nomblr.com",
 			"password": "sha1$94e2e$77cc9e6edd3fef4f96458c7bb9ede86bd8bc25d2"
 		}
 	},

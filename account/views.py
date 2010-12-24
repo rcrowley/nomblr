@@ -17,7 +17,14 @@ def account(request):
 
 @login_required
 def email(request):
+    if 'POST' == request.method:
+        form = forms.EmailForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+    else:
+        form = forms.EmailForm(instance=request.user)
     return render_to_response('email.html',
+                              {'form': form},
                               context_instance=RequestContext(request))
 
 @login_required

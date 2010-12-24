@@ -49,6 +49,20 @@ def test_GET_email():
     response = c.get('/account/email/')
     assert 200 == response.status_code
 
+def test_POST_email():
+    c = Client()
+    c.login(username='tester', password='password')
+    response = c.get('/account/email/', {'email': 'different@nomblr.com'})
+    assert 200 == response.status_code
+    response = c.get('/account/email/', {'email': 'tester@nomblr.com'})
+    assert 200 == response.status_code
+
+def test_POST_invalid_email():
+    c = Client()
+    c.login(username='tester', password='password')
+    response = c.get('/account/email/', {'email': 'invalid email'})
+    assert 200 == response.status_code
+
 def test_GET_password():
     c = Client()
     c.login(username='tester', password='password')
