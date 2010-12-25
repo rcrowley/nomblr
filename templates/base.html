@@ -3,20 +3,30 @@
 <head>
 <meta charset="utf-8">
 <title>{% block title %}Nomblr{% endblock %}</title>
+<link rel="stylesheet" href="/static/css/styles.css" type="text/css" media="screen" charset="utf-8">
+<link rel="stylesheet" media="all and (orientation:portrait)" href="/static/css/portrait.css">
+<link rel="stylesheet" media="all and (orientation:landscape)" href="/static/css/landscape.css">
+<script src="/static/js/base.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/site.js" type="text/javascript" charset="utf-8"></script>
+<link rel="apple-touch-icon-precomposed" href="/static/images/global/apple-touch-icon.png" />
 </head>
 <body>
 <header>
-	<h1><a href="/">Nomblr</a></h1>
-	{% if request.user.is_authenticated %}
-		<ul>
-			<li><a href="/">Add a nom</a></li>
-			<li><a href="/{{ request.user }}/">My noms</a></li>
-			<li><a href="/friends/">Friends</a></li>
-		</ul>
-		<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Nom search"></form>
-	{% endif %}
+	<div class="nav">
+		<h1><a href="/">Nomblr</a></h1>
+		{% if request.user.is_authenticated %}
+			<menu>
+				<li><a href="/" onclick="return true;">Add a nom</a></li>
+				<li><a href="/{{ request.user }}/">My noms</a></li>
+				<li><a href="/friends/">Friends</a></li>
+			</menu>
+			<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Nom search"></form>
+		{% endif %}
+	</div>
 </header>
+<div id="content">
 {% block content %}{% endblock %}
+</div>
 <footer>
 	<ul>
 	{% if request.user.is_authenticated %}
