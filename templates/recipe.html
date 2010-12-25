@@ -5,18 +5,20 @@
 {% block content %}
 	<article>
 		<h1>{{ recipe.name }}</h1>
-		{{ recipe.text|mdown }}
-		{% if recipe.owner == request.user %}
-			<footer>
-				<ul>
-					<li><a href="#" onclick="document.getElementById('edit').style.display = ''; return false;">Edit</a></li>
-				</ul>
-			</footer>
-			<form method="POST" id="edit"{% if not form.is_bound %} style="display: none;"{% endif %}>
-				{% csrf_token %}
-				{{ form.as_p }}
-				<p><input type="submit" value="Save"> or <a href="#" onclick="document.getElementById('edit').style.display = 'none'; return false;">cancel</a></p>
-			</form>
-		{% endif %}
+		<div class=" paper white">
+			{{ recipe.text|mdown }}
+			{% if recipe.owner == request.user %}
+				<footer>
+					<ul>
+						<li><a href="#" onclick="document.getElementById('edit').style.display = ''; return false;">Edit</a></li>
+					</ul>
+				</footer>
+				<form method="POST" id="edit"{% if not form.is_bound %} style="display: none;"{% endif %}>
+					{% csrf_token %}
+					{{ form.as_p }}
+					<p><input type="submit" value="Save" class="green"> or <a href="#" onclick="document.getElementById('edit').style.display = 'none'; return false;">cancel</a></p>
+				</form>
+			{% endif %}
+		</div>
 	</article>
 {% endblock %}

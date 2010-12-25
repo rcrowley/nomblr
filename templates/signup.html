@@ -3,10 +3,12 @@
 {% block content %}
 	<section>
 		<h1>Signup</h1>
-		<form method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<p><input type="submit" value="Signup"></p>
-		</form>
+		<div class="paper white">
+			<form method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<p><input type="submit" value="Signup" class="green"></p>
+			</form>
+		</div>
 	</section>
 {% endblock %}
