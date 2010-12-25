@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls.defaults import *
 
 from django.contrib import admin
@@ -45,3 +46,9 @@ urlpatterns = patterns('',
     (r'^$', 'nomblr.views.index'),
 
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+         {'document_root': '/home/vagrant/work/nomblr/static'}),
+    )

@@ -1,0 +1,11 @@
+#recipe .recfull {
+	height: 100%;
+}
+
+#recipe .recfull h3 {
+	font-size: 30px;
+}
+
+#recipe .recfull ul, #recipe .recfull p {
+	font-size: 24px;
+}
