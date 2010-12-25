@@ -3,10 +3,12 @@
 {% block content %}
 	<section>
 		<h1>Change your username</h1>
-		<form method="POST" onsubmit="return confirm('Changing your username will break outside links to your recipes.');">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<p><input type="submit" value="Change"></p>
-		</form>
+		<div class="paper white">
+			<form method="POST" onsubmit="return confirm('Changing your username will break outside links to your recipes.');">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<p><input type="submit" value="Change" class="green"></p>
+			</form>
+		</div>
 	</section>
 {% endblock %}

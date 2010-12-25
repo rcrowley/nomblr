@@ -7,10 +7,12 @@
 		{% else %}
 			<h1>Noms</h1>
 		{% endif %}
-		<ul>
-		{% for recipe in recipes %}
-			<li><a href="{{ recipe.slug }}/">{{ recipe }}</a></li>
-		{% endfor %}
-		</ul>
+		<div class="paper white">
+			<ul>
+			{% for recipe in recipes %}
+				<li><a href="{{ recipe.slug }}/">{{ recipe }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
 	</nav>
 {% endblock %}

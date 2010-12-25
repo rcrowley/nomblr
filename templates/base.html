@@ -16,9 +16,9 @@
 		<h1><a href="/">Nomblr</a></h1>
 		{% if request.user.is_authenticated %}
 			<menu>
-				<li><a href="/" onclick="return true;">Add a nom</a></li>
-				<li><a href="/{{ request.user }}/">My noms</a></li>
-				<li><a href="/friends/">Friends</a></li>
+				<li><a href="#" class="add" onclick="showStuff('new'); return false;">Add a nom</a></li>
+				<li><a href="/{{ request.user }}/"{% if 0 %} class="selected"{% endif %}>My noms</a></li>
+				<li><a href="/friends/"{% if 0 %} class="selected"{% endif %}>Friends</a></li>
 			</menu>
 			<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Nom search"></form>
 		{% endif %}
@@ -27,7 +27,9 @@
 <div id="content">
 {% block content %}{% endblock %}
 </div>
+<div class="clear"></div>
 <footer>
+	<p>Nomblr is lovingly baked to perfection by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
 	<ul>
 	{% if request.user.is_authenticated %}
 		<li><strong>{{ request.user }}</strong></li>
@@ -38,7 +40,17 @@
 		<li><a href="/signup/">Signup</a></li>
 	{% endif %}
 	</ul>
-	<p>Nomblr is lovingly baked to perfection by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
 </footer>
+<div id="new" class="overlay" style="display:none;">
+	<div class="content">
+		<a href="#" class="close" title="close" onclick="hideStuff('new');return false;">Close</a>
+		<form method="POST">
+			{% csrf_token %}
+			<p><label for="id_name"><span class="left"></span><span class="right">Name:</span></label> <input id="id_name" type="text" name="name" maxlength="255" /></p>
+			<p><label for="id_text"><span class="left"></span><span class="right">Recipe:</span></label> <textarea id="id_text" rows="10" cols="40" name="text"></textarea></p>
+			<p class="submit greenborder"><input type="submit" value="Save" class="green"></p>
+		</form>
+	</div>
+</div>
 </body>
 </html>
