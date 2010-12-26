@@ -1,22 +1,7 @@
 {% extends "base.html" %}
 
-{% load mdown %}
-
 {% block content %}
-	<article>
-		<h1>{{ recipe.name }}</h1>
-		<div class=" paper white">
-			{{ recipe.text|mdown }}
-			{% if recipe.owner == request.user %}
-				<footer>
-					<p><a href="#" onclick="document.getElementById('edit').style.display = ''; return false;">Edit</a></p>
-				</footer>
-				<form method="POST" id="edit"{% if not form.is_bound %} style="display: none;"{% endif %}>
-					{% csrf_token %}
-					{{ form.as_p }}
-					<p><input type="submit" value="Save" class="green"> or <a href="#" onclick="document.getElementById('edit').style.display = 'none'; return false;">cancel</a></p>
-				</form>
-			{% endif %}
-		</div>
-	</article>
+<div id="recipe" class="overlay">
+	{% include "recipe_body.html" %}
+</div>
 {% endblock %}
