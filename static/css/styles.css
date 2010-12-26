@@ -655,7 +655,11 @@ body > footer ul li { margin-left: 10px; }
 
 /* Content Lists */
 
-.cont_list { list-style-type: none; }
+.cont_list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
 
 .cont_list li {
 	border-bottom: 1px dotted #e0e0e0;
@@ -891,8 +895,13 @@ body > footer ul li { margin-left: 10px; }
 
 .col2.profile .name { margin: 5px 0 2px; }
 
-.col2.profile .edit {
-	background: url(/static/images/profile/edit_arrow.png) 0 3px no-repeat;
+.col2.profile ul {
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+.col2.profile ul li a {
 	font-size: 12px;
 	font-weight: bold;
 	padding-left: 11px;
