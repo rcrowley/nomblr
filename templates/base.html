@@ -6,8 +6,6 @@
 <link rel="stylesheet" href="/static/css/styles.css" type="text/css" media="screen" charset="utf-8">
 <link rel="stylesheet" media="all and (orientation:portrait)" href="/static/css/portrait.css">
 <link rel="stylesheet" media="all and (orientation:landscape)" href="/static/css/landscape.css">
-<script src="/static/js/base.js" type="text/javascript" charset="utf-8"></script>
-<script src="/static/js/site.js" type="text/javascript" charset="utf-8"></script>
 <link rel="apple-touch-icon-precomposed" href="/static/images/global/apple-touch-icon.png" />
 </head>
 <body>
@@ -16,7 +14,7 @@
 		<h1><a href="/">Nomblr</a></h1>
 		{% if request.user.is_authenticated %}
 			<menu>
-				<li><a href="#" class="add" onclick="showStuff('new'); return false;">Add a nom</a></li>
+				<li><a href="#" class="add">Add a nom</a></li>
 				<li><a href="/{{ request.user }}/"{% if 0 %} class="selected"{% endif %}>My noms</a></li>
 				<li><a href="/friends/"{% if 0 %} class="selected"{% endif %}>Friends</a></li>
 			</menu>
@@ -41,9 +39,9 @@
 	{% endif %}
 	</ul>
 </footer>
-<div id="new" class="overlay" style="display:none;">
+<div id="add" class="overlay" style="display:none;">
 	<div class="content">
-		<a href="#" class="close" title="close" onclick="hideStuff('new');return false;">Close</a>
+		<a href="#" class="close" title="close">Close</a>
 		<form action="/" method="POST">
 			{% csrf_token %}
 			<p><label for="id_name"><span class="left"></span><span class="right">Name:</span></label> <input id="id_name" type="text" name="name" maxlength="255" /></p>
@@ -52,5 +50,9 @@
 		</form>
 	</div>
 </div>
+<div id="recipe" class="overlay" style="display:none;">
+</div>
+<script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/nomblr.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
