@@ -9,16 +9,23 @@ $(function() {
 		return false;
 	});
 
-	$("#recipe a.close").click(function() {
+	$("#recipe a.close").live("click", function() {
 		$("#recipe").hide();
 		return false;
 	});
-	$("#recipe a.fullscreen").click(function() {
+	$("#recipe a.fullscreen").live("click", function() {
 		$("#recwindow").addClass("recfull");
 		return false;
 	});
-	$("#recipe a.fullscreen_off").click(function() {
+	$("#recipe a.fullscreen_off").live("click", function() {
 		$("#recwindow").removeClass("recfull");
+		return false;
+	});
+
+	$("a.recipe").click(function() {
+		$("#recipe").load($(this).attr("href"), function() {
+			$("#recipe").show();
+		});
 		return false;
 	});
 

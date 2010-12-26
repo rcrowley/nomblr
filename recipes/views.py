@@ -33,7 +33,11 @@ def recipe(request, username, slug):
                 return redirect(recipe)
     else:
         form = forms.RecipeForm(request.user, instance=recipe)
-    return render_to_response('recipe.html',
+    if request.is_ajax():
+        template_name = 'recipe_body.html'
+    else:
+        template_name = 'recipe.html'
+    return render_to_response(template_name,
                               {'form': form,
                                'recipe': recipe},
                               context_instance=RequestContext(request))
