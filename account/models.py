@@ -8,7 +8,7 @@ class Profile(models.Model):
 
     def gravatar(self, size):
         return 'http://gravatar.com/avatar/{0}.jpg?size={1}'.format(
-            hashlib.md5(self.owner.email.strip().lower()).hexdigest(),
+            hashlib.md5(self.user.email.strip().lower()).hexdigest(),
             size)
     @property
     def gravatar32(self):
