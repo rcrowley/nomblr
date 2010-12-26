@@ -33,19 +33,11 @@ h3 { font-size: 18px; }
 
 p { font-size: 16px; }
 
-ul {
-	margin: 1em 0;
-}
-
-ul, ol, li {
-	list-style: none;
-	padding: 0;
-}
-
 article, aside, details, figcaption, figure, footer, header, hgroup,
 menu, nav, section { display: block; }
 
 menu {
+	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
@@ -159,6 +151,7 @@ form .note:hover {
 	box-shadow: 0 0 15px rgba(0, 0, 0, .25);
 	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, .25);
 	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, .25);
+	padding: 20px;
 	transition: box-shadow 1s ease-in;
 	-moz-transition: -moz-box-shadow 1s ease-in;
 	-webkit-transition: -webkit-box-shadow 1s ease-in;
