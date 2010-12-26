@@ -4,12 +4,13 @@
 	<nav>
 		<h1>Your account</h1>
 		<div class="paper white">
+			<p>Looking for your recipes?&nbsp; Those are called <a href="/{{ request.user }}/">noms</a>.&nbsp; This stuff is more administrative.</p>
 			<ul>
 				<li><a href="email/">Change your email address</a></li>
 				<li><a href="password/">Change your password</a></li>
 				<li><a href="username/">Change your username</a></li>
 			</ul>
-			<p>Change <em>{{ owner.email }}</em>&#8217;s avatar at <a href="http://gravatar.com/">Gravatar</a>.</p>
+			<p>Change <em>{{ request.user.email }}</em>&#8217;s avatar at <a href="http://gravatar.com/">Gravatar</a>.</p>
 		</div>
 	</nav>
 {% endblock %}
