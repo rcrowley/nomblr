@@ -44,7 +44,7 @@
 <div id="new" class="overlay" style="display:none;">
 	<div class="content">
 		<a href="#" class="close" title="close" onclick="hideStuff('new');return false;">Close</a>
-		<form method="POST">
+		<form action="/" method="POST">
 			{% csrf_token %}
 			<p><label for="id_name"><span class="left"></span><span class="right">Name:</span></label> <input id="id_name" type="text" name="name" maxlength="255" /></p>
 			<p><label for="id_text"><span class="left"></span><span class="right">Recipe:</span></label> <textarea id="id_text" rows="10" cols="40" name="text"></textarea></p>
