@@ -9,4 +9,17 @@ $(function() {
 		return false;
 	});
 
+	$("#recipe a.close").click(function() {
+		$("#recipe").hide();
+		return false;
+	});
+	$("#recipe a.fullscreen").click(function() {
+		$("#recwindow").addClass("recfull");
+		return false;
+	});
+	$("#recipe a.fullscreen_off").click(function() {
+		$("#recwindow").removeClass("recfull");
+		return false;
+	});
+
 });
