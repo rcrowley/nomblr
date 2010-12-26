@@ -43,7 +43,7 @@ urlpatterns = patterns('',
     (r'^(?P<username>[^/]+)/$', 'nomblr.recipes.views.recipes'),
     (r'^(?P<username>[^/]+)/(?P<slug>[^/]+)/$', 'nomblr.recipes.views.recipe'),
 
-    (r'^$', 'nomblr.views.index'),
+    (r'^$', 'nomblr.recipes.views.recipes'),
 
 )
 

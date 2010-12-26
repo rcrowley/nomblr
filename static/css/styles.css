@@ -165,7 +165,7 @@ form .note:hover {
 	-webkit-transition: -webkit-box-shadow .5s ease-in;
 }
 
-#content .paper.white { min-height: 550px; }
+#content .paper.white { min-height: 250px; }
 
 .paper_top {
 	background: rgba(0, 0, 0, .05);
@@ -648,7 +648,7 @@ body > footer ul li { margin-left: 10px; }
 #content .paper.white {
 	float: left;
 	margin-right: 30px;
-	width: 740px;
+	width: 700px;
 }
 
 .col2 { padding-top: 10px; }
@@ -679,7 +679,7 @@ body > footer ul li { margin-left: 10px; }
 
 .cont_list h3 { margin: 7px 0 0 50px; }
 
-.cont_list h3 .user, .browse .col2 .user {
+.cont_list h3 .user, .col2 .user {
 	color: #414141;
 	font-size: 14px;
 	font-style: italic;
@@ -753,19 +753,19 @@ body > footer ul li { margin-left: 10px; }
 	text-shadow: 0 -1px rgba(92, 51, 11, 0.6);	
 }
 
-.browse .col2 ol { margin-bottom: 0; }
+.col2 ol { margin-bottom: 0; }
 
-.browse .col2 li { margin-bottom: 7px; }
+.col2 li { margin-bottom: 7px; }
 
-.browse .col2 li:last-child { margin-bottom: 0; }
+.col2 li:last-child { margin-bottom: 0; }
 
-.browse .col2 .nom {
+.col2 .nom {
 	display: block;
 	font-size: 12px;
 	font-weight: bold;
 }
 
-.browse .col2 .user {
+.col2 .user {
 	color: #5c330b;
 	font-size: 12px;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
@@ -895,13 +895,13 @@ body > footer ul li { margin-left: 10px; }
 
 .col2.profile .name { margin: 5px 0 2px; }
 
-.col2.profile ul {
+.col2.profile ol, .col2.profile ul {
 	list-style-type: none;
 	overflow: hidden;
 	margin: 0;
 	padding: 0;
 }
-.col2.profile ul li a, .col2.profile p {
+.col2 li a, .col2.profile p {
 	font-size: 12px;
 	font-weight: bold;
 	padding-left: 11px;
