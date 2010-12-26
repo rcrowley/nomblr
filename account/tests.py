@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from django.test import Client
 
 import forms
+import models
 import views
 
 def test_EmailForm_valid():
@@ -30,6 +32,15 @@ def test_UsernameForm_invalid_username():
     form = forms.UsernameForm({'username': 'invalid username'})
     assert not form.is_valid()
     assert 'username' in form.errors
+
+def test_Profile_create():
+    try:
+        user = User(username='testprofile')
+        user.save()
+        assert user == user.get_profile().user
+    except models.Profile.DoesNotExist as e:
+        print(repr(e))
+        assert False
 
 def test_GET_account():
     c = Client()

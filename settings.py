@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'django_nose',
     'haystack',
     'nomblr',
+    'nomblr.account',
     'nomblr.recipes',
 )
 
@@ -92,3 +93,5 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 DEFAULT_FROM_EMAIL = 'Nomblr <noreply@nomblr.com>'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTH_PROFILE_MODULE = 'account.Profile'
