@@ -41,13 +41,17 @@
 			<section>
 				<h4>Recently viewed</h4>
 				<ol>
-					<li><a href="#" class="nom">hooah</a> <a href="#" class="user">@hooah</a></li>
+				{% for recipe in viewed_recipes %}
+					<li><a href="/{{ recipe.owner }}/{{ recipe.slug }}/" class="nom">{{ recipe.name }}</a> <a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a></li>
+				{% endfor %}
 				</ol>
 			</section>
 			<section>
 				<h4>Newest noms</h4>
 				<ol>
-					<li><a href="#" class="nom">hooah</a> <a href="#" class="user">@hooah</a></li>
+				{% for recipe in newest_recipes %}
+					<li><a href="/{{ recipe.owner }}/{{ recipe.slug }}/" class="nom">{{ recipe.name }}</a> <a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a></li>
+				{% endfor %}
 				</ol>
 			</section>
 		{% endif %}

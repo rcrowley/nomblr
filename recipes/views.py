@@ -10,15 +10,21 @@ import models
 def recipes(request, username=None):
     # TODO Check permissions.
     if username is None:
-        owner = None
-        recipes = models.Recipe.objects.all()
+        newest_recipes = models.Recipe.objects.all().order_by('-created')[0:3]
+        recipes = models.Recipe.objects.all() # TODO Paginate.
+        viewed_recipes = []
+        return render_to_response('recipes.html',
+                                  {'newest_recipes': newest_recipes,
+                                   'recipes': recipes,
+                                   'viewed_recipes': viewed_recipes},
+                                  context_instance=RequestContext(request))
     else:
         owner = get_object_or_404(User, username=username)
         recipes = models.Recipe.objects.filter(owner=owner)
-    return render_to_response('recipes.html',
-                              {'owner': owner,
-                               'recipes': recipes},
-                              context_instance=RequestContext(request))
+        return render_to_response('recipes.html',
+                                  {'owner': owner,
+                                   'recipes': recipes},
+                                  context_instance=RequestContext(request))
 
 @login_required
 def recipe(request, username, slug):

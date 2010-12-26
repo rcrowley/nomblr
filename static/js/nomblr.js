@@ -22,7 +22,7 @@ $(function() {
 		return false;
 	});
 
-	$("a.recipe").click(function() {
+	$("a.nom").click(function() {
 		$("#recipe").load($(this).attr("href"), function() {
 			$("#recipe").show();
 		});
