@@ -654,7 +654,7 @@ body > footer ul li { margin-left: 10px; }
 
 /* Content Lists */
 
-.cont_list { margin: 20px; }
+.cont_list { list-style-type: none; }
 
 .cont_list li {
 	border-bottom: 1px dotted #e0e0e0;
