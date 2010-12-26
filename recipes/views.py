@@ -34,7 +34,7 @@ def recipe(request, username, slug):
     else:
         form = forms.RecipeForm(request.user, instance=recipe)
     if request.is_ajax():
-        template_name = 'recipe_body.html'
+        template_name = 'recipe_article.html'
     else:
         template_name = 'recipe.html'
     return render_to_response(template_name,
