@@ -4,9 +4,16 @@
 	<nav>
 		<h1>Noms like &#8220;{{ form.cleaned_data.q }}&#8221;</h1>
 		<div class="paper white">
-			<ol>
+			<ol class="cont_list recipes">
 			{% for result in results %}
 				<li><a href="/{{ result.owner }}/{{ result.slug }}/">{{ result.name }}</a></li>
+				<li>
+					<a href="/{{ result.owner }}/" class="avatar"><img src="{{ result.owner.gravatar32 }}" alt="@{{ result.owner }}"></a>
+					<h3>
+						<a href="{{ result.slug }}/">{{ result.name }}</a>
+						<a href="/{{ result.owner }}/" class="user">@{{ result.owner }}</a>
+					</h3>
+				</li>
 			{% endfor %}
 			</ol>
 		</div>

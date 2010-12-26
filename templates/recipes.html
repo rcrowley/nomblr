@@ -3,14 +3,20 @@
 {% block content %}
 	<nav>
 		{% if owner %}
-			<h1><strong>{{ owner }}</strong>&#8217;s noms</h1>
+			<h1>Noms from <strong>@{{ owner }}</strong></h1>
 		{% else %}
 			<h1>Noms</h1>
 		{% endif %}
 		<div class="paper white">
-			<ul>
+			<ul class="cont_list recipes">
 			{% for recipe in recipes %}
-				<li><a href="{{ recipe.slug }}/">{{ recipe }}</a></li>
+				<li>
+					<a href="/{{ recipe.owner }}/" class="avatar"><img src="{{ recipe.owner.gravatar32 }}" alt="@{{ recipe.owner }}"></a>
+					<h3>
+						<a href="{{ recipe.slug }}/">{{ recipe }}</a>
+						<a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a>
+					</h3>
+				</li>
 			{% endfor %}
 			</ul>
 		</div>
