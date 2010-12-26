@@ -8,7 +8,7 @@
 			{% for result in results %}
 				<li><a href="/{{ result.owner }}/{{ result.slug }}/">{{ result.name }}</a></li>
 				<li>
-					<a href="/{{ result.owner }}/" class="avatar"><img src="{{ result.owner.gravatar32 }}" alt="@{{ result.owner }}"></a>
+					<a href="/{{ result.owner }}/" class="avatar"><img src="{{ result.owner.get_profile.gravatar32 }}" alt="@{{ result.owner }}"></a>
 					<h3>
 						<a href="{{ result.slug }}/">{{ result.name }}</a>
 						<a href="/{{ result.owner }}/" class="user">@{{ result.owner }}</a>

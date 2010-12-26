@@ -11,7 +11,7 @@
 			<ul class="cont_list recipes">
 			{% for recipe in recipes %}
 				<li>
-					<a href="/{{ recipe.owner }}/" class="avatar"><img src="{{ recipe.owner.gravatar32 }}" alt="@{{ recipe.owner }}"></a>
+					<a href="/{{ recipe.owner }}/" class="avatar"><img src="{{ recipe.owner.get_profile.gravatar32 }}" alt="@{{ recipe.owner }}"></a>
 					<h3>
 						<a href="{{ recipe.slug }}/">{{ recipe }}</a>
 						<a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a>
