@@ -15,8 +15,9 @@
 		{% if request.user.is_authenticated %}
 			<menu>
 				<li><a href="#" class="add">Add a nom</a></li>
-				<li><a href="/{{ request.user }}/"{% if 0 %} class="selected"{% endif %}>My noms</a></li>
-				<li><a href="/friends/"{% if 0 %} class="selected"{% endif %}>Friends</a></li>
+				<li><a href="/"{% if "/" == request.META.PATH_INFO %} class="selected"{% endif %}>Browse noms</a></li>
+				<li><a href="/{{ request.user }}/"{% if owner == request.user and recipes %} class="selected"{% endif %}>Your noms</a></li>
+				<li><a href="/friends/"{% if "/friends/" == request.META.PATH_INFO %} class="selected"{% endif %}>Friends</a></li>
 			</menu>
 			<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Nom search"></form>
 		{% endif %}
