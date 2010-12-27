@@ -5,16 +5,15 @@ from django.template.defaultfilters import slugify
 class Recipe(models.Model):
     """
     A single recipe, known on the site as a "nom."
-
-    This needs some help from the database:
-
-        CREATE UNIQUE INDEX uri ON recipes_recipe (owner_id, slug);
     """
     owner = models.ForeignKey(User, related_name='recipes')
     slug = models.SlugField(max_length=255, db_index=False)
     name = models.CharField(max_length=255)
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+
+    class Meta(object):
+        unique_together = (('owner', 'slug'),)
 
     def __repr__(self):
         return '<Recipe: {0}>'.format(self.slug)

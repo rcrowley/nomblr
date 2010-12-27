@@ -10,10 +10,6 @@ import search_indexes
 import templatetags.mdown
 import views
 
-def setup():
-    connection.cursor().execute(
-        'CREATE UNIQUE INDEX uri ON recipes_recipe (owner_id, slug);')
-
 def test_RecipeForm_valid():
     user = User.objects.get(username='tester')
     form = forms.RecipeForm(user, {'name': 'Test recipe',
