@@ -47,8 +47,15 @@ def test_Recipe_create():
 
 # TODO Test models further.  Editing, for example.
 
-def test_RecipeIndex_signalled():
+def test_RecipeIndex_name():
     form = haystack.forms.SearchForm({'q': 'Test recipe'})
+    assert form.is_valid()
+    user = User.objects.get(username='tester')
+    results = form.search().filter(owner=user)
+    assert 1 == len(results)
+
+def test_RecipeIndex_text():
+    form = haystack.forms.SearchForm({'q': 'ingredients'})
     assert form.is_valid()
     user = User.objects.get(username='tester')
     results = form.search().filter(owner=user)
