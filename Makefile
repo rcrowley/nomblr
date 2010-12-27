@@ -6,6 +6,11 @@ coverage:
 	rm -rf nomblr.index
 	mv nomblr.index.sav nomblr.index || true
 
+run: runserver
+
+runserver:
+	python manage.py runserver 0.0.0.0:8000
+
 syncdb:
 	rm -rf nomblr.db nomblr.index
 	mv fixtures/initial_data.json fixtures/initial_data.json.sav
