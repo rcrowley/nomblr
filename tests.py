@@ -114,7 +114,7 @@ def test_POST_invalid_index():
     c = Client()
     c.login(username='tester', password='password')
     response = c.post('/', {})
-    assert 200 == response.status_code
+    assert 400 == response.status_code
 
 def test_GET_signup():
     c = Client()

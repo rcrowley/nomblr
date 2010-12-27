@@ -1,13 +1,15 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views
-from django.http import HttpResponseNotAllowed
+from django.core.paginator import Paginator
+from django.http import HttpResponseBadRequest, HttpResponseNotAllowed
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 import haystack.forms
 
 import forms
 import recipes.forms
+import recipes.views
 
 @login_required
 def index(request):
@@ -19,9 +21,10 @@ def index(request):
     if 'GET' == request.method and 'q' in request.GET:
         form = haystack.forms.SearchForm(request.GET)
         if form.is_valid():
-            results = form.search().filter(owner=request.user)
+            paginator = Paginator(form.search().filter(owner=request.user), 15)
         else:
-            results = []
+            paginator = Paginator([], 15)
+        results = paginator.page(int(request.GET.get('page', 1)))
         return render_to_response('search.html',
                                   {'form': form,
                                    'results': results},
@@ -31,11 +34,10 @@ def index(request):
         if form.is_valid():
             recipe = form.save()
             return redirect(recipe)
+        else:
+            return HttpResponseBadRequest()
     else:
-        form = recipes.forms.RecipeForm(request.user)
-    return render_to_response('index.html',
-                              {'form': form},
-                              context_instance=RequestContext(request))
+        return recipes.views.recipes(request)
 
 def signup(request):
     if 'POST' == request.method:

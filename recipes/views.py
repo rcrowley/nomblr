@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 
@@ -11,17 +12,19 @@ def recipes(request, username=None):
     # TODO Check permissions.
     if username is None:
         newest_recipes = models.Recipe.objects.all().order_by('-created')[0:3]
-        recipes = models.Recipe.objects.all() # TODO Paginate.
+        paginator = Paginator(models.Recipe.objects.all(), 15)
+        recipes = paginator.page(int(request.GET.get('page', 1)))
         viewed_recipes = []
-        return render_to_response('recipes.html',
+        return render_to_response('browse.html',
                                   {'newest_recipes': newest_recipes,
                                    'recipes': recipes,
                                    'viewed_recipes': viewed_recipes},
                                   context_instance=RequestContext(request))
     else:
         owner = get_object_or_404(User, username=username)
-        recipes = models.Recipe.objects.filter(owner=owner)
-        return render_to_response('recipes.html',
+        paginator = Paginator(models.Recipe.objects.filter(owner=owner), 15)
+        recipes = paginator.page(int(request.GET.get('page', 1)))
+        return render_to_response('profile.html',
                                   {'owner': owner,
                                    'recipes': recipes},
                                   context_instance=RequestContext(request))

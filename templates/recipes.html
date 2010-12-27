@@ -1,59 +1,28 @@
-{% extends "base.html" %}
-
-{% block content %}
-	<nav>
-		{% if owner %}
-			<h1>Noms from @{{ owner }}</h1>
+<ol class="cont_list recipes">
+{% if recipes.paginator %}
+	{% for recipe in recipes.object_list %}
+		{% include "recipe_li.html" %}
+	{% endfor %}
+	<li class="paging">
+		{% if recipes.has_previous %}
+			<a href="?page=1" class="first" title="Back to the first page">Back to the first page</a>
+			<a href="?page={{ recipes.previous_page_number }}" class="prev" title="Previous page">Previous page</a>
 		{% else %}
-			<h1>Noms</h1>
+			<a class="first current" title="Back to the first page">Back to the first page</a>
+			<a class="prev current" title="Previous page">Previous page</a>
 		{% endif %}
-		<div class="paper white">
-			<ul class="cont_list recipes">
-			{% for recipe in recipes %}
-				{% include "recipe_li.html" %}
-			{% endfor %}
-			</ul>
-		</div>
-	</nav>
-	<section class="col2 profile">
-		{% if owner %}
-			<section>
-				<a href="/{{ owner }}/" class="avatar"><img src="{{ owner.get_profile.gravatar64 }}" alt="{{ owner }}" /></a>
-				<h4 class="name">@{{ owner }}</h4>
-			</section>
-			{% if owner == request.user %}
-				<section>
-					<h4>Change your&hellip;</h4>
-					<ul>
-						<li><a href="/account/email/">email address</a></li>
-						<li><a href="/account/password/">password</a></li>
-						<li><a href="/account/username/">username</a></li>
-					</ul>
-					<p>Change <em>{{ request.user.email }}</em>&#8217;s<br />avatar at <a href="http://gravatar.com/">Gravatar</a>.</p>
-				</section>
-			{% endif %}
-			<!--
-			<section class="tags">
-				<h4>@{{ owner }}&#8217;s tags</h4>
-			</section>
-			-->
+		<span class="count">Page {{ recipes.number }}/{{ recipes.paginator.num_pages }}</span>
+		{% if recipes.has_next %}
+			<a href="?page={{ recipes.next_page_number }}" class="next" title="Next page">Next page</a>
+			<a href="?page={{ recipes.paginator.num_pages }}" class="last" title="Go to the last page">Go to the last page</a>
 		{% else %}
-			<section>
-				<h4>Recently viewed</h4>
-				<ol>
-				{% for recipe in viewed_recipes %}
-					<li><a href="/{{ recipe.owner }}/{{ recipe.slug }}/" class="nom">{{ recipe.name }}</a> <a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a></li>
-				{% endfor %}
-				</ol>
-			</section>
-			<section>
-				<h4>Newest noms</h4>
-				<ol>
-				{% for recipe in newest_recipes %}
-					<li><a href="/{{ recipe.owner }}/{{ recipe.slug }}/" class="nom">{{ recipe.name }}</a> <a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a></li>
-				{% endfor %}
-				</ol>
-			</section>
+			<a class="next current" title="Next page">Next page</a>
+			<a class="last current" title="Go to the last page">Go to the last page</a>
 		{% endif %}
-	</section>
-{% endblock %}
+	</li>
+{% else %}
+	{% for recipe in recipes %}
+		{% include "recipe_li.html" %}
+	{% endfor %}
+{% endif %}
+</ol>
