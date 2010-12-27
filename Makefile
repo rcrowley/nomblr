@@ -6,6 +6,9 @@ coverage:
 	rm -rf nomblr.index
 	mv nomblr.index.sav nomblr.index || true
 
+reindex:
+	python manage.py rebuild_index
+
 run: runserver
 
 runserver:

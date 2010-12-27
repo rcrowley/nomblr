@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 import hashlib
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, unique=True)
+    user = models.OneToOneField(User, related_name='profile')
 
     def gravatar(self, size):
         return 'http://gravatar.com/avatar/{0}.jpg?size={1}'.format(

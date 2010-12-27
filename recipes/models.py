@@ -25,6 +25,10 @@ class Recipe(models.Model):
     def get_absolute_url(self):
         return '/{0}/{1}/'.format(self.owner, self.slug)
 
+    @property
+    def gravatar32(self):
+        return self.owner.get_profile().gravatar32
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Recipe, self).save(*args, **kwargs)
