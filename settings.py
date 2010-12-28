@@ -10,8 +10,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'nomblr.db',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nomblr',
+        'OPTIONS': {
+            'init_command': 'SET storage_engine = InnoDB',
+        },
+        'USER': 'root',
     }
 }
 

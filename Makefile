@@ -1,10 +1,13 @@
 all:
 
 coverage:
-	mv nomblr.index nomblr.index.sav || true
 	python manage.py test -s --with-coverage --cover-package=nomblr
-	rm -rf nomblr.index
-	mv nomblr.index.sav nomblr.index || true
+
+createdb:
+	mysql -uroot -e"CREATE DATABASE IF NOT EXISTS nomblr CHARACTER SET utf8;"
+
+destroydb:
+	mysql -uroot -e"DROP DATABASE IF EXISTS nomblr;"
 
 reindex:
 	python manage.py rebuild_index
@@ -17,16 +20,12 @@ runserver:
 schema:
 	python manage.py build_solr_schema | sudo tee /etc/solr/conf/schema.xml >/dev/null
 
-syncdb:
-	rm -rf nomblr.db nomblr.index
-	mv fixtures/initial_data.json fixtures/initial_data.json.sav
+syncdb: createdb
+	mv fixtures/initial_data.json fixtures/initial_data.json.sav || true
 	python manage.py syncdb
 	mv fixtures/initial_data.json.sav fixtures/initial_data.json
 
 test:
-	mv nomblr.index nomblr.index.sav || true
 	python manage.py test -s
-	rm -rf nomblr.index
-	mv nomblr.index.sav nomblr.index || true
 
-.PHONY: all coverage syncdb test
+.PHONY: all coverage createdb destroydb reindex run runserver schema syncdb test
