@@ -85,9 +85,11 @@ USERNAME_BLACKLIST = (
     'you',
 )
 
+HAYSTACK_ITERATOR_LOAD_PER_QUERY = 15
+HAYSTACK_SEARCH_ENGINE = 'solr'
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 15
 HAYSTACK_SITECONF = 'nomblr.search_site'
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = 'nomblr.index'
+HAYSTACK_SOLR_URL = 'http://localhost:9000/solr'
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 

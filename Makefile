@@ -14,6 +14,9 @@ run: runserver
 runserver:
 	python manage.py runserver 0.0.0.0:8000
 
+schema:
+	python manage.py build_solr_schema | sudo tee /etc/solr/conf/schema.xml >/dev/null
+
 syncdb:
 	rm -rf nomblr.db nomblr.index
 	mv fixtures/initial_data.json fixtures/initial_data.json.sav
