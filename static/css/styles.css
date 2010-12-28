@@ -899,12 +899,11 @@ body > footer ul li { margin-left: 10px; }
 	list-style-type: none;
 	overflow: hidden;
 	margin: 0;
-	padding: 0;
+	padding: 0 0 0 11px;
 }
 .col2 li a, .col2.profile p {
 	font-size: 12px;
 	font-weight: bold;
-	padding-left: 11px;
 }
 .col2.profile p {
 	color: #5c330b;
