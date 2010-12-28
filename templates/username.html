@@ -2,7 +2,7 @@
 
 {% block content %}
 	<section>
-		<h1>Change your username</h1>
+		<h1>{% block title %}Change your username{% endblock %}</h1>
 		<div class="paper white">
 			<form method="POST" onsubmit="return confirm('Changing your username will break outside links to your recipes.');">
 				{% csrf_token %}

@@ -2,7 +2,7 @@
 
 {% block content %}
 	<nav>
-		<h1>Noms from @{{ owner }}</h1>
+		<h1>{% block title %}Noms from @{{ owner }}{% endblock %}</h1>
 		<div class="paper white">
 			{% include "recipes.html" %}
 		</div>

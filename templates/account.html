@@ -2,7 +2,7 @@
 
 {% block content %}
 	<nav>
-		<h1>Your account</h1>
+		<h1>{% block title %}Your account{% endblock %}</h1>
 		<div class="paper white">
 			<p>Looking for your recipes?&nbsp; Those are called <a href="/{{ request.user }}/">noms</a>.&nbsp; This stuff is more administrative.</p>
 			<ul>

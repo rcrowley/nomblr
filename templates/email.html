@@ -2,7 +2,7 @@
 
 {% block content %}
 	<section>
-		<h1>Change your email address</h1>
+		<h1>{% block title %}Change your email address{% endblock %}</h1>
 		<div class="paper white">
 			<form method="POST">
 				{% csrf_token %}

@@ -4,7 +4,7 @@
 	{% if request.is_ajax %}
 		<a href="#" class="close" title="close">Close</a>
 	{% endif %}
-	<h1><a href="/{{ recipe.owner }}/"><img src="{{ recipe.owner.get_profile.gravatar64 }}" alt="@{{ recipe.owner }}"></a> <span>{{ recipe.name }}</span></h1>
+	<h1><a href="/{{ recipe.owner }}/"><img src="{{ recipe.owner.get_profile.gravatar64 }}" alt="@{{ recipe.owner }}"></a> <span>{% block title %}{{ recipe.name }}{% endblock %}</span></h1>
 	<p><label><span class="left"></span><span class="right">Recipe</span></label></p>
 	<div id="recwindow" class="recipe">
 		<a href="#" class="fullscreen" title="View Fullscreen">View Fullscreen</a>

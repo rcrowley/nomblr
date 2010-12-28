@@ -2,6 +2,7 @@
 
 {% block content %}
 	<section>
+		<h1>{% block title %}Login{% endblock %}</h1>
 		<form method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
