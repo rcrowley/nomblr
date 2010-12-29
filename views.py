@@ -21,7 +21,14 @@ def index(request):
     if 'GET' == request.method and 'q' in request.GET:
         form = haystack.forms.SearchForm(request.GET)
         if form.is_valid():
+
+            # TODO Only recipes request.user can access.  Something in between
+            # wide open:
+            paginator = Paginator(form.search(), 15)
+            # and completely private:
             paginator = Paginator(form.search().filter(owner=request.user), 15)
+            # must eventually be implemented.
+
         else:
             paginator = Paginator([], 15)
         results = paginator.page(int(request.GET.get('page', 1)))
