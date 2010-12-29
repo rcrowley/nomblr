@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django_nose',
+    'gunicorn',
     'haystack',
     'nomblr',
     'nomblr.account',
