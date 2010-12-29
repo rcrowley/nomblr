@@ -10,7 +10,7 @@ destroydb:
 	mysql -uroot -e"DROP DATABASE IF EXISTS nomblr;"
 
 reindex:
-	python manage.py rebuild_index
+	yes | python manage.py rebuild_index
 
 run: runserver
 
@@ -26,6 +26,8 @@ syncdb: createdb
 	mv fixtures/initial_data.json.sav fixtures/initial_data.json
 
 test:
+	yes | python manage.py clear_index
 	python manage.py test -s
+	yes | python manage.py rebuild_index
 
 .PHONY: all coverage createdb destroydb reindex run runserver schema syncdb test
