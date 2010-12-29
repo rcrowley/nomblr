@@ -39,7 +39,7 @@ def index(request):
     else:
         return recipes.views.recipes(request)
 
-def signup(request):
+def signup(request, invite_code=''):
     if 'POST' == request.method:
         form = forms.SignupForm(request.POST)
         if form.is_valid():
@@ -49,7 +49,7 @@ def signup(request):
             login(request, user)
             return redirect('/')
     else:
-        form = forms.SignupForm()
+        form = forms.SignupForm(initial={'invite_code': invite_code})
     return render_to_response('signup.html',
                               {'form': form},
                               context_instance=RequestContext(request))

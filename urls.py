@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
     (r'^signup/$', 'nomblr.views.signup'),
+    (r'^signup/(?P<invite_code>[0-9a-f]{40})/$', 'nomblr.views.signup'),
     (r'^login/$', 'django.contrib.auth.views.login',
      {'template_name': 'login.html'}),
     (r'^logout/$', 'nomblr.views.logout',
