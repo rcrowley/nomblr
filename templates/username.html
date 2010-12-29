@@ -11,4 +11,7 @@
 			</form>
 		</div>
 	</section>
+	{% with request.user as owner %}
+		{% include "profile_aside.html" %}
+	{% endwith %}
 {% endblock %}
