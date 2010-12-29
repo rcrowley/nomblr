@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth.models import User
 
 import account.forms
@@ -11,6 +12,7 @@ class SignupForm(account.forms.EmailForm, account.forms.UsernameForm):
                                 widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password',
                                 widget=forms.PasswordInput)
+    invite_code = forms.CharField(label='Invite code')
 
     class Meta(object):
         model = User
@@ -22,6 +24,12 @@ class SignupForm(account.forms.EmailForm, account.forms.UsernameForm):
         if password1 != password2:
             raise forms.ValidationError('Confirm your password.')
         return password2
+
+    def clean_invite_code(self):
+        invite_code = self.cleaned_data['invite_code']
+        if invite_code in settings.INVITE_CODES:
+            return invite_code
+        raise forms.ValidationError('That invite code is no good.')
 
     def save(self, commit=True):
         user = super(SignupForm, self).save(commit=False)

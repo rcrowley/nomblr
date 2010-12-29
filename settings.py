@@ -102,3 +102,17 @@ DEFAULT_FROM_EMAIL = 'Nomblr <noreply@nomblr.com>'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTH_PROFILE_MODULE = 'account.Profile'
+
+# for N in $(seq 10); do dd if=/dev/urandom bs=1024 count=1 2>/dev/null | sha1sum | cut -d" " -f1 | xargs -I__ echo "    '__',"; done
+INVITE_CODES = (
+    'aa073e50954855d0533476ad002cce721d1b830d', # Richard
+    '40d34e87b489abb396d4b6a4a76858bb26b44582', # Cap
+    '193fc93fae56728443ecae4c0746feb70c0d1d14',
+    'c774838bb1d410c00df127f02b389d86ad6c2bc8',
+    'f49a92b37661eef7650d68155c93f4e117c3e4e1',
+    '1a92be8a1433a722ab68c4008b335a8df7474ca0',
+    '6b0471a0ed8331a14377090d6092e2850256f82e',
+    'e9d65034adbe521db55a4b6f4c8f7842a5a849f2',
+    '1cadb092a5eeee385f6823096c40e7af616ed1f4',
+    'c0723bf9bd1df69d25151fc23a0918dd304ef1d3',
+)
