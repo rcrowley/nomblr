@@ -9,6 +9,15 @@
 		}
 	},
 	{
+		"model": "auth.user",
+		"pk": 2,
+		"fields": {
+			"username": "othertester",
+			"email": "othertester@nomblr.com",
+			"password": "sha1$94e2e$77cc9e6edd3fef4f96458c7bb9ede86bd8bc25d2"
+		}
+	},
+	{
 		"model": "recipes.recipe",
 		"pk": 1,
 		"fields": {

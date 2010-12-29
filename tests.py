@@ -122,6 +122,14 @@ def test_GET_search():
     c.login(username='tester', password='password')
     response = c.get('/', {'q': 'foo'})
     assert 200 == response.status_code
+    assert 1 == response.context['results'].paginator.count
+
+def test_GET_other_search():
+    c = Client()
+    c.login(username='othertester', password='password')
+    response = c.get('/', {'q': 'foo'})
+    assert 200 == response.status_code
+    assert 0 == response.context['results'].paginator.count
 
 def test_GET_empty_search():
     c = Client()

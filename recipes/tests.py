@@ -80,6 +80,12 @@ def test_GET_recipes():
     response = c.get('/tester/')
     assert 200 == response.status_code
 
+def test_GET_other_recipes():
+    c = Client()
+    c.login(username='othertester', password='password')
+    response = c.get('/tester/')
+    assert 404 == response.status_code
+
 def test_GET_missing_recipes():
     c = Client()
     c.login(username='tester', password='password')
@@ -91,6 +97,12 @@ def test_GET_recipe():
     c.login(username='tester', password='password')
     response = c.get('/tester/foo-bar/')
     assert 200 == response.status_code
+
+def test_GET_other_recipe():
+    c = Client()
+    c.login(username='othertester', password='password')
+    response = c.get('/tester/foo-bar/')
+    assert 404 == response.status_code
 
 def test_GET_missing_recipe():
     c = Client()
