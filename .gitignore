@@ -2,3 +2,6 @@
 *.db
 *.index
 .coverage
+nomblr
+nomblr.sh
+nomblr.tar.gz
