@@ -13,7 +13,7 @@ def blueprint():
     local('blueprint show nomblr -P')
     rsync_project(local_dir='nomblr', remote_dir='/etc/puppet/modules')
     local('rm -rf nomblr')
-    puppet()
+    #puppet()
 
 def deploy():
     run('mkdir -p /usr/local/share/wsgi')
