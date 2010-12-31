@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<section>
+	<section id="splash">
 		<h1>{% block title %}Signup{% endblock %}</h1>
-		<div class="paper white">
+		<h2>Cook good food. Share recipes with your friends</h2>
+		<div class="paper white signup">
+			<h3>Signup or <a href="/login/">login</a></h3>
 			<form method="POST">
 				{% csrf_token %}
-				{{ form.as_p }}
-				<p><input type="submit" value="Signup" class="green"></p>
+				<label for="id_email">Email address</label>
+				<input type="text" name="email" id="id_email" />
+				<label for="id_username">Username</label>
+				<input id="id_username" type="text" name="username" maxlength="30" />
+				<label for="id_password1">Password</label>
+				<input type="password" name="password1" id="id_password1" />
+				<label for="id_password2">Confirm password</label>
+				<input type="password" name="password2" id="id_password2" />
+				<label for="id_invite_code">Invite code</label>
+				<input type="text" name="invite_code" id="id_invite_code" />
+				<span class="submit greenborder"><input type="submit" value="Let's get nomming" class="green" /></span>
 			</form>
 		</div>
 	</section>

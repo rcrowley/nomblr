@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<section>
-		<h1>{% block title %}Login{% endblock %}</h1>
-		<form method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<p><input type="submit" value="Login" class="green"></p>
-		</form>
-		<ul>
-			<li><a href="/forgot/">Forgot your password?</a></li>
-		</ul>
+	<section id="splash">
+		<h1>{% block title %}Nomblr{% endblock %}</h1>
+		<h2>Cook good food. Share recipes with your friends</h2>
+		<section class="paper white" id="request" style="">
+			<h3>Login or <a href="/signup/">signup</a></h3>
+			<p>We're currently in closed alpha, but that doesn't mean we won't invite awesome people to help us test this out!</p>
+			<form method="POST">
+				{% csrf_token %}
+				<input id="id_username" type="text" name="username" value="" maxlength="30" />
+				<input id="id_password" type="password" name="password" value="" />
+				<p class="note tright">Help! <a href="/forgot/" class="bold">I forgot my password!</a></p>
+				<span class="submit greenborder"><input type="submit" value="Log in to Nomblr" class="green"></span>
+			</form>
+		</section>
 	</section>
 {% endblock %}

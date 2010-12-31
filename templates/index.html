@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<section>
-		<h1>{% block title %}Nom{% endblock %}</h1>
-		<form method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<p><input type="submit" value="Save" class="green"></p>
-		</form>
+	<section id="splash">
+		<h1>{% block title %}Nomblr{% endblock %}</h1>
+		<h2>Cook good food. Share recipes with your friends</h2>
+		<section class="paper white" id="request" style="">
+			<h3>Login</h3>
+			<p>We're currently in closed beta, but that doesn't mean we won't invite awesome people to help us test this out! Just give us your email address (we'll <strong>never</strong> spam you) and a few sentences about your favorite thing to cook. We'll take a look and send out invites when we have some free time!</p>
+			<form method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<span class="submit greenborder"><input type="submit" value="Save" class="green"></span>
+			</form>
+		</section>
 	</section>
 {% endblock %}

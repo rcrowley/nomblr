@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <title>{% block title %}Home{% endblock %} &mdash; Nomblr</title>
-<link rel="stylesheet" href="/static/css/styles.css" type="text/css" media="screen" charset="utf-8">
-<link rel="stylesheet" media="all and (orientation:portrait)" href="/static/css/portrait.css">
-<link rel="stylesheet" media="all and (orientation:landscape)" href="/static/css/landscape.css">
+<link rel="stylesheet" href="/static/css/styles.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" media="all and (orientation:portrait)" href="/static/css/portrait.css" />
+<link rel="stylesheet" media="all and (orientation:landscape)" href="/static/css/landscape.css" />
 <link rel="apple-touch-icon-precomposed" href="/static/images/global/apple-touch-icon.png" />
 </head>
 <body>
-<header>
+<header{% if "/login/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/signup/" == request.META.PATH_INFO %} style="display:none;"{% endif %}>
 	<div class="nav">
 		<h1><a href="/">Nomblr</a></h1>
 		{% if request.user.is_authenticated %}
@@ -28,7 +28,7 @@
 </div>
 <div class="clear"></div>
 <footer>
-	<p>Nomblr is lovingly baked to perfection by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
+	<p>Nomblr is lovingly baked by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
 	<ul>
 	{% if request.user.is_authenticated %}
 		<li><strong>{{ request.user }}</strong></li>
@@ -55,5 +55,8 @@
 </div>
 <script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/static/js/nomblr.js" type="text/javascript" charset="utf-8"></script>
+{% if "/login/" == request.META.PATH_INFO %}
+<script src="/static/js/login.js" type="text/javascript" charset="utf-8"></script>
+{% endif %}
 </body>
 </html>
