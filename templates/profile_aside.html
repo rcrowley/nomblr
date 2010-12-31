@@ -1,4 +1,5 @@
 <aside class="col2 profile">
+{% if request.user.is_authenticated %}
 	<section>
 		<a href="/{{ owner }}/" class="avatar"><img src="{{ owner.get_profile.gravatar64 }}" alt="{{ owner }}" /></a>
 		<h4 class="name">@{{ owner }}</h4>
@@ -19,4 +20,5 @@
 		<h4>@{{ owner }}&#8217;s tags</h4>
 	</section>
 	-->
+{% endif %}
 </aside>
