@@ -22,7 +22,7 @@ runserver:
 schema:
 	python manage.py build_solr_schema | sudo tee /etc/solr/conf/schema.xml >/dev/null
 
-syncdb: createdb
+syncdb:
 	mv fixtures/initial_data.json fixtures/initial_data.json.sav || true
 	python manage.py syncdb
 	mv fixtures/initial_data.json.sav fixtures/initial_data.json
