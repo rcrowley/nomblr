@@ -389,7 +389,11 @@ body > header {
 .nav .add.selected { background-position: 0 3px; }
 
 /* TODO This element drops down 20px in Chromium. */
-.nav form { float: right; }
+.nav form { 
+	position:absolute;
+	right:0;
+	top:12px;
+}
 
 .nav input[type="text"] {
 	background: #fff url(/static/images/global/search_mag.png) 11px 5px no-repeat;
