@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
-
 from django.contrib import admin
+import os.path
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -51,5 +52,5 @@ urlpatterns = patterns('',
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-         {'document_root': '/home/vagrant/work/nomblr/static'}),
+         {'document_root': os.path.join(os.path.dirname(__file__), 'static')}),
     )
