@@ -22,7 +22,7 @@ def deploy():
     with cd('/usr/local/share/wsgi'):
         run('tar xf /tmp/nomblr.tar.gz')
     with settings(warn_only=True):
-        result = run('kill -HUP $(cat /var/run/nomblr.pid)')
+        result = run('restart nomblr')
     if result.failed:
         run('start nomblr')
 
