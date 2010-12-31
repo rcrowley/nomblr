@@ -99,12 +99,12 @@ USERNAME_BLACKLIST = (
     'you',
 )
 
+HAYSTACK_SITECONF = 'nomblr.search_site'
 if 'Darwin' == os.uname()[0]:
     HAYSTACK_SEARCH_ENGINE = 'whoosh'
     HAYSTACK_WHOOSH_PATH = 'nomblr.index'
 else:
     HAYSTACK_SEARCH_ENGINE = 'solr'
-    HAYSTACK_SITECONF = 'nomblr.search_site'
     HAYSTACK_SOLR_URL = 'http://localhost:9000/solr'
 HAYSTACK_ITERATOR_LOAD_PER_QUERY = 15
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 15
