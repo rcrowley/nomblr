@@ -24,7 +24,7 @@ def deploy():
     with settings(warn_only=True):
         result = run('kill -HUP $(cat /var/run/gunicorn.pid)')
     if result.failed:
-        run('start gunicorn')
+        run('start nomblr')
 
 def puppet():
     run('puppet apply --verbose /etc/puppet/manifests/site.pp')
