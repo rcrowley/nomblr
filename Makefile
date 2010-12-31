@@ -1,7 +1,9 @@
 all:
 
 coverage:
+	yes | python manage.py clear_index
 	python manage.py test -s --with-coverage --cover-package=nomblr
+	yes | python manage.py rebuild_index
 
 createdb:
 	mysql -uroot -e"CREATE DATABASE IF NOT EXISTS nomblr CHARACTER SET utf8;"
