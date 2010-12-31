@@ -1,6 +1,7 @@
+import os
 import os.path
 
-DEBUG = True
+DEBUG = 'NOMBLR_VIA' not in os.environ
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -8,16 +9,24 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nomblr',
-        'OPTIONS': {
-            'init_command': 'SET storage_engine = InnoDB',
-        },
-        'USER': 'root',
+if 'Darwin' == os.uname()[0]:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'nomblr.db',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'nomblr',
+            'OPTIONS': {
+                'init_command': 'SET storage_engine = InnoDB',
+            },
+            'USER': 'root',
+        }
+    }
 
 TIME_ZONE = 'America/Los_Angeles'
 LANGUAGE_CODE = 'en-US'
@@ -90,16 +99,23 @@ USERNAME_BLACKLIST = (
     'you',
 )
 
+if 'Darwin' == os.uname()[0]:
+    HAYSTACK_SEARCH_ENGINE = 'whoosh'
+    HAYSTACK_WHOOSH_PATH = 'nomblr.index'
+else:
+    HAYSTACK_SEARCH_ENGINE = 'solr'
+    HAYSTACK_SITECONF = 'nomblr.search_site'
+    HAYSTACK_SOLR_URL = 'http://localhost:9000/solr'
 HAYSTACK_ITERATOR_LOAD_PER_QUERY = 15
-HAYSTACK_SEARCH_ENGINE = 'solr'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 15
-HAYSTACK_SITECONF = 'nomblr.search_site'
-HAYSTACK_SOLR_URL = 'http://localhost:9000/solr'
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 DEFAULT_FROM_EMAIL = 'Nomblr <noreply@nomblr.com>'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 AUTH_PROFILE_MODULE = 'account.Profile'
 
