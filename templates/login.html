@@ -9,8 +9,8 @@
 			<p>We're currently in closed alpha, but that doesn't mean we won't invite awesome people to help us test this out!</p>
 			<form method="POST">
 				{% csrf_token %}
-				<input id="id_username" type="text" name="username" value="" maxlength="30" />
-				<input id="id_password" type="password" name="password" value="" />
+				<input id="id_username" type="text" name="username" placeholder="username" maxlength="30" />
+				<input id="id_password" type="password" name="password" placeholder="password" />
 				<p class="note tright">Help! <a href="/forgot/" class="bold">I forgot my password!</a></p>
 				<span class="submit greenborder"><input type="submit" value="Log in to Nomblr" class="green"></span>
 			</form>

@@ -17,7 +17,7 @@
 			<form method="POST" id="edit"{% if not form.is_bound %} style="display: none;"{% endif %}>
 				{% csrf_token %}
 				{{ form.as_p }}
-				<p><input type="submit" value="Save" class="green"> or <a href="#" onclick="document.getElementById('edit').style.display = 'none'; return false;">cancel</a></p>
+				<span class="submit greenborder"><input type="submit" value="Save changes" class="green"></span> or <a href="#" onclick="document.getElementById('edit').style.display = 'none'; return false;">cancel</a>
 			</form>
 		{% endif %}
 	</div>

@@ -7,7 +7,7 @@
 			<form method="POST" onsubmit="return confirm('Changing your username will break outside links to your recipes.');">
 				{% csrf_token %}
 				{{ form.as_p }}
-				<p><input type="submit" value="Change" class="green"></p>
+				<span class="submit greenborder"><input type="submit" value="Save Changes" class="green"></span>
 			</form>
 		</div>
 	</section>

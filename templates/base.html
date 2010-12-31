@@ -19,7 +19,7 @@
 				<li><a href="/{{ request.user }}/"{% if owner == request.user and recipes %} class="selected"{% endif %}>Your noms</a></li>
 				<li><a href="/friends/"{% if "/friends/" == request.META.PATH_INFO %} class="selected"{% endif %}>Friends</a></li>
 			</menu>
-			<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Nom search"></form>
+			<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Search for noms"></form>
 		{% endif %}
 	</div>
 </header>
@@ -45,9 +45,9 @@
 		<a href="#" class="close" title="close">Close</a>
 		<form action="/" method="POST">
 			{% csrf_token %}
-			<p><label for="id_name"><span class="left"></span><span class="right">Name</span></label> <input id="id_name" type="text" name="name" maxlength="255" /></p>
-			<p><label for="id_text"><span class="left"></span><span class="right">Recipe</span></label> <textarea id="id_text" rows="10" cols="40" name="text"></textarea></p>
-			<p class="submit greenborder"><input type="submit" value="Save" class="green"></p>
+			<label for="id_name"><span class="left"></span><span class="right">Name of your dish</span></label> <input id="id_name" type="text" name="name" maxlength="255" />
+			<label for="id_text"><span class="left"></span><span class="right">Recipe</span></label> <textarea id="id_text" rows="10" cols="40" name="text"></textarea>
+			<span class="submit greenborder"><input type="submit" value="Save this dish" class="green"></span>
 		</form>
 	</div>
 </div>
@@ -55,8 +55,5 @@
 </div>
 <script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/static/js/nomblr.js" type="text/javascript" charset="utf-8"></script>
-{% if "/login/" == request.META.PATH_INFO %}
-<script src="/static/js/login.js" type="text/javascript" charset="utf-8"></script>
-{% endif %}
 </body>
 </html>

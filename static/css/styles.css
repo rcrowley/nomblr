@@ -607,8 +607,6 @@ body > footer ul li { margin-left: 10px; }
 	position: relative;
 }
 
-#recipe .recipe p { font-size: 18px; }
-
 .fullscreen {
 	background: url(/static/images/global/fullscreen.png) 0 0 no-repeat;
 	height: 19px;
@@ -702,7 +700,7 @@ body > footer ul li { margin-left: 10px; }
 
 /* Tags & Friend Search Buttons Global */
 
-.tags a, .navbtns a, #edit input[type="submit"] {
+.tags a, .navbtns a {
 	background: gradient(linear, 0% 0%, 0% 100%, from(#e3e3e3), to(#c1c1c1));
 	background: -moz-linear-gradient(100% 100% 90deg, #c1c1c1, #e3e3e3);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e3e3e3), to(#c1c1c1));
@@ -721,12 +719,12 @@ body > footer ul li { margin-left: 10px; }
 	white-space: nowrap;
 }
 
-.tags a:hover, .navbtns a:hover, #edit input[type="submit"]:hover {
+.tags a:hover, .navbtns a:hover {
 	color: #2f2f2f;
 	text-decoration: none;
 }
 
-.tags a:active, .navbtns a:active, #edit input[type="submit"]:active {
+.tags a:active, .navbtns a:active {
 	border-color: #aaadad;
 	box-shadow: inset 0 5px 5px rgba(0, 0, 0, .18);
 	-moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, .18);
@@ -742,6 +740,14 @@ body > footer ul li { margin-left: 10px; }
 	padding: 1px 2px;
 	position: relative;
 	top: -1px;
+}
+
+/* Settings forms */
+
+.paper.white label{
+	display:block;
+	font-size:14px;
+	margin-bottom:5px;
 }
 
 /* Recipes */
@@ -941,17 +947,15 @@ body > footer ul li { margin-left: 10px; }
 	color: #5c330b;
 	display: block;
 	font-size: 14px;
-	font-weight: bold;
-	font-variant: small-caps;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+	font-weight:normal;
+	margin:0 0 5px;
+	position:static;
+	text-shadow:none;
 }
 
-#edit input[type="text"], #edit input[type="password"] {
-	border: 1px solid rgba(92, 51, 11, 0.6);
-	font-size: 11px;
-	margin-bottom: 5px;
-	padding: 5px 10px;
-	width: 166px;
+#edit input[type="text"], #edit input[type="password"], #edit textarea{
+	margin:0 0 15px;
+	width:531px;
 }
 
 #edit .edit {
@@ -967,9 +971,9 @@ body > footer ul li { margin-left: 10px; }
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
-#edit input[type="submit"] {
-	border-color: #9d9d9d;
-	min-width: 1px;
+#edit .submit{
+	margin-left:0;
+	margin-right:10px;
 }
 
 .col2.profile .tags a {
