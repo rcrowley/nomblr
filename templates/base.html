@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon-precomposed" href="/static/images/global/apple-touch-icon.png" />
 </head>
 <body>
-<header{% if "/login/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/signup/" == request.META.PATH_INFO %} style="display:none;"{% endif %}>
+<header{% if "/login/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/signup/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/account/password/reset/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/account/password/reset/sent/" == request.META.PATH_INFO %} style="display:none;"{% endif %}>
 	<div class="nav">
 		<h1><a href="/">Nomblr</a></h1>
 		{% if request.user.is_authenticated %}
