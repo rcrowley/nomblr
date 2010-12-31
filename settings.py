@@ -116,6 +116,11 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nomblr@rcrowley.org'
+EMAIL_HOST_PASSWORD = 'Nie6pooX'
+EMAIL_USE_TLS = True
 
 AUTH_PROFILE_MODULE = 'account.Profile'
 
