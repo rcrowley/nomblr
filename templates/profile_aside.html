@@ -4,17 +4,6 @@
 		<a href="/{{ owner }}/" class="avatar"><img src="{{ owner.get_profile.gravatar64 }}" alt="{{ owner }}" /></a>
 		<h4 class="name">@{{ owner }}</h4>
 	</section>
-	{% if owner == request.user %}
-		<section>
-			<h4>Change your&hellip;</h4>
-			<ul>
-				<li><a href="/account/email/">email address</a></li>
-				<li><a href="/account/password/">password</a></li>
-				<li><a href="/account/username/">username</a></li>
-			</ul>
-			<p>Change <em>{{ request.user.email }}</em>&#8217;s<br />avatar at <a href="http://gravatar.com/">Gravatar</a>.</p>
-		</section>
-	{% endif %}
 	<!--
 	<section class="tags">
 		<h4>@{{ owner }}&#8217;s tags</h4>

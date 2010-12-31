@@ -6,10 +6,11 @@
 <link rel="stylesheet" href="/static/css/styles.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" media="all and (orientation:portrait)" href="/static/css/portrait.css" />
 <link rel="stylesheet" media="all and (orientation:landscape)" href="/static/css/landscape.css" />
+<link rel="icon" type="image/x-icon" href="/static/images/global/favicon.png" /> 
 <link rel="apple-touch-icon-precomposed" href="/static/images/global/apple-touch-icon.png" />
 </head>
 <body>
-<header{% if "/login/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/signup/" == request.META.PATH_INFO %} style="display:none;"{% endif %}>
+<header{% if "/login/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/signup/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/account/password/reset/" == request.META.PATH_INFO %} style="display:none;"{% endif %}{% if "/account/password/reset/sent/" == request.META.PATH_INFO %} style="display:none;"{% endif %}>
 	<div class="nav">
 		<h1><a href="/">Nomblr</a></h1>
 		{% if request.user.is_authenticated %}
