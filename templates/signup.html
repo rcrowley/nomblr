@@ -9,14 +9,19 @@
 			<form method="POST">
 				{% csrf_token %}
 				<label for="id_email">Email address</label>
+				{{ form.email.errors }}
 				{{ form.email }}
 				<label for="id_username">Username</label>
+				{{ form.username.errors }}
 				{{ form.username }}
 				<label for="id_password1">Password</label>
+				{{ form.password1.errors }}
 				{{ form.password1 }}
 				<label for="id_password2">Confirm password</label>
+				{{ form.password2.errors }}
 				{{ form.password2 }}
 				<label for="id_invite_code">Invite code</label>
+				{{ form.invite_code.errors }}
 				{{ form.invite_code }}
 				<span class="submit greenborder"><input type="submit" value="Let's get nomming" class="green" /></span>
 			</form>
