@@ -140,6 +140,18 @@ form .note:hover {
 	-webkit-transition: opacity .3s ease-in;
 }
 
+.errorlist{
+	color:red;
+	font-size:12px;
+	list-style:none;
+	margin:5px 0 3px;
+	padding-left:0;
+}
+
+.errorlist li{
+	margin-bottom:3px;
+}
+
 /* Paper Textures */
 
 .paper.white {
