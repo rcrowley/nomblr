@@ -598,16 +598,24 @@ body > footer ul li { margin-left: 10px; }
 	text-shadow: 0 1px rgba(255, 255, 255, 1);
 }
 
+#recipe h1 a{
+	float:left;
+}
+
 #recipe img {
 	border: 3px solid rgba(103, 103, 103, .5);
 	border-radius: 5px;
 	-moz-border-radius: 5px;
+	height:45px;
+	width:45px;
 }
 
 #recipe h1 span {
-	position: relative;
-	left: 5px;
-	top: -17px;
+	display:block;
+	line-height:34px;
+	margin-left:65px;
+	position:relative;
+	top:5px;
 }
 
 #recipe .recipe {
