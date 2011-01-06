@@ -512,10 +512,9 @@ body > footer ul li { margin-left: 10px; }
 /* New Overlay */
 
 .overlay {
-	background: rgba(0, 0, 0, .3);
 	bottom: 0;
 	left: 0;
-	position: fixed;
+	position: absolute;
 	right: 0;
 	top: 47px;
 	z-index: 10000;
@@ -588,6 +587,10 @@ body > footer ul li { margin-left: 10px; }
 .overlay .recipe { height: 236px; }
 
 .overlay .submit { margin-left: 40px; }
+
+.overlay .recipe.recfull footer{
+	padding-bottom:40px;
+}
 
 /* View Recipe */
 
