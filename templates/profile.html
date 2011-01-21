@@ -4,6 +4,9 @@
 	<nav>
 		<h1>{% block title %}Noms from @{{ owner }}{% endblock %}</h1>
 		<div class="paper white">
+			<div class="paper_top">
+				Like @{{ owner }}'s noms? <a href="#" class="follow">+ follow {{ owner }}</a>
+			</div>
 			{% include "recipes.html" %}
 		</div>
 	</nav>
