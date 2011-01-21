@@ -76,6 +76,7 @@ INSTALLED_APPS = (
     'haystack',
     'nomblr',
     'nomblr.account',
+    'nomblr.follows',
     'nomblr.recipes',
 )
 
