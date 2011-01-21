@@ -186,6 +186,7 @@ form .note:hover {
 	font-family: 'Lucida Grande', sans-serif;
 	font-size: 12px;
 	font-weight: bold;
+	margin:-20px -20px 20px;
 	padding: 20px;
 	text-align: center;
 }
@@ -240,12 +241,12 @@ form .note:hover {
 	border: 1px solid #b6be8f;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
-	color: #3c480a;
+	color: #3c480a!important;
 	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-size: 11px;
 	font-weight: bold;
 	padding: 3px 10px;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.7);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.7)!important;
 }
 .follow:hover {
 	color: #293207;
@@ -938,20 +939,42 @@ body > footer ul li { margin-left: 10px; }
 	border: 3px solid rgba(255, 226, 226, 0.3);
 	border-radius: 5px;
 	-moz-border-radius: 5px;
+	height:50px;
+	width:50px;
 }
 
-.col2.profile .name { margin: 5px 0 2px; }
+.col2.profile .name {
+	margin:5px;
+}
+
+.col2.profile .edit-link {
+	background:rgba(41,41,41,0.35);
+	border-radius:20px;
+	-moz-border-radius:20px;
+	display:block;
+	font-size:12px;
+	font-weight:bold;
+	padding:3px;
+	text-align:center;
+}
+
+.col2.profile .edit-link:hover{
+	background:rgba(41,41,41,0.5);
+	text-decoration:none;
+}
 
 .col2.profile ol, .col2.profile ul {
 	list-style-type: none;
 	overflow: hidden;
 	margin: 0;
-	padding: 0 0 0 11px;
+	padding: 0;
 }
+
 .col2 li a, .col2.profile p {
 	font-size: 12px;
 	font-weight: bold;
 }
+
 .col2.profile p {
 	color: #5c330b;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.5);
