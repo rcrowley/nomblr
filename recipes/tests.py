@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.db import connection
 from django.db import IntegrityError
 from django.test import Client
 import haystack.forms
