@@ -59,3 +59,18 @@ def test_POST_unfollow():
     othertester = User.objects.get(username='othertester')
     assert 0 == len(tester.following.all())
     assert 0 == len(othertester.followers.all())
+
+def test_GET_search():
+    c = Client()
+    c.login(username='othertester', password='password')
+    response = c.get('/', {'q': 'foo'})
+    assert 200 == response.status_code
+    assert 0 == response.context['results'].paginator.count
+    tester = User.objects.get(username='tester')
+    othertester = User.objects.get(username='othertester')
+    follow = models.Follow.objects.create(follower=othertester,
+                                          followee=tester)
+    response = c.get('/', {'q': 'foo'})
+    assert 200 == response.status_code
+    assert 1 == response.context['results'].paginator.count
+    othertester.following.filter(followee=tester).delete()
