@@ -4,6 +4,10 @@ from django.db.models.signals import post_save
 import hashlib
 
 class Profile(models.Model):
+    """
+    The user's profile, following the common Django pattern for extending
+    django.contrib.auth.models.User.
+    """
     user = models.OneToOneField(User, related_name='profile')
 
     def gravatar(self, size):
