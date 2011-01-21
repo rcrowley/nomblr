@@ -10,7 +10,7 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=255, db_index=False)
     name = models.CharField(max_length=255)
     text = models.TextField()
-    url = models.TextField()
+    url = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta(object):
