@@ -1,18 +1,25 @@
 <aside class="col2 profile">
-{% if request.user.is_authenticated %}
 	<section>
 		<a href="/{{ owner }}/" class="avatar"><img src="{{ owner.get_profile.gravatar64 }}" alt="{{ owner }}" /></a>
 		<h4 class="name">@{{ owner }}</h4>
-		<a href="#" class="follow">+ follow</a><br />
-		<a href="#" class="following"><span class="static">following</span> <span class="unfollow">unfollow</span></a>
+	{% if owner == request.user %}
+		{% if owner in request.user.following %}{# FIXME #}
+			<a id="follow" style="display: none;" href="/{{ owner }}/follow/" class="follow">+ follow</a>
+			<a id="following" href="/{{ owner }}/unfollow/" class="following"><span class="static">following</span> <span class="unfollow">unfollow</span></a>
+		{% else %}
+			<a id="follow" href="/{{ owner }}/follow/" class="follow">+ follow</a>
+			<a id="following" style="display: none;" href="/{{ owner }}/unfollow/" class="following"><span class="static">following</span> <span class="unfollow">unfollow</span></a>
+		{% endif %}
+	{% endif %}
 	</section>
+{% if owner == request.user %}
 	<section>
 		<a href="/account/" class="edit">Edit profile info</a>
 	</section>
+{% endif %}
 	<!--
 	<section class="tags">
 		<h4>@{{ owner }}&#8217;s tags</h4>
 	</section>
 	-->
-{% endif %}
 </aside>

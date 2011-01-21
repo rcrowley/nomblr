@@ -29,4 +29,26 @@ $(function() {
 		return false;
 	});
 
+	$("a.follow, a.following").click(function() {
+		var e = this;
+		$.ajax({
+			data: {},
+			error: function(xhr, textStatus, errorThrown) {
+				alert("Something went wrong.");
+			},
+			success: function(data, textStatus, xhr) {
+				if ($(e).hasClass("follow")) {
+					$("div.paper_top, a.follow").hide(); // FIXME
+					$("a.following").show();
+				}
+				else if ($(e).hasClass("following")) {
+					$("a.follow").show();
+				}
+			},
+			type: "POST",
+			url: $(this).attr("href")
+		});
+		return false;
+	});
+
 });

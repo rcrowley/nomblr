@@ -23,6 +23,12 @@ def test_Follow_create():
     assert 0 == len(tester.followers.all())
     assert 1 == len(othertester.followers.all())
 
+def test_FollowManager_in():
+    tester = User.objects.get(username='tester')
+    othertester = User.objects.get(username='othertester')
+    assert othertester in tester.following
+    assert tester not in othertester.following
+
 def test_Follow_destroy():
     tester = User.objects.get(username='tester')
     othertester = User.objects.get(username='othertester')
