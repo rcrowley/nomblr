@@ -38,11 +38,12 @@ $(function() {
 			},
 			success: function(data, textStatus, xhr) {
 				if ($(e).hasClass("follow")) {
-					$("div.paper_top, a.follow").hide(); // FIXME
+					$("div.paper_top, a.follow").hide();
 					$("a.following").show();
 				}
 				else if ($(e).hasClass("following")) {
 					$("a.follow").show();
+					$("a.following").hide();
 				}
 			},
 			type: "POST",

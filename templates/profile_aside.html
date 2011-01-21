@@ -4,11 +4,11 @@
 		<h4 class="name">@{{ owner }}</h4>
 	{% if owner == request.user %}
 		{% if owner in request.user.following %}{# FIXME #}
-			<a id="follow" style="display: none;" href="/{{ owner }}/follow/" class="follow">+ follow</a>
-			<a id="following" href="/{{ owner }}/unfollow/" class="following"><span class="static">following</span> <span class="unfollow">unfollow</span></a>
+			<a href="/{{ owner }}/follow/" class="follow" style="display: none;">+ follow</a>
+			<a href="/{{ owner }}/unfollow/" class="following"><span class="static">following</span> <span class="unfollow">unfollow</span></a>
 		{% else %}
-			<a id="follow" href="/{{ owner }}/follow/" class="follow">+ follow</a>
-			<a id="following" style="display: none;" href="/{{ owner }}/unfollow/" class="following"><span class="static">following</span> <span class="unfollow">unfollow</span></a>
+			<a href="/{{ owner }}/follow/" class="follow">+ follow</a>
+			<a href="/{{ owner }}/unfollow/" class="following" style="display: none;"><span class="static">following</span><span class="unfollow">unfollow</span></a>
 		{% endif %}
 	{% endif %}
 	</section>
