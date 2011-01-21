@@ -84,7 +84,7 @@ def test_GET_other_recipes():
     c = Client()
     c.login(username='othertester', password='password')
     response = c.get('/tester/')
-    assert 404 == response.status_code
+    assert 200 == response.status_code
 
 def test_GET_missing_recipes():
     c = Client()
@@ -102,7 +102,7 @@ def test_GET_other_recipe():
     c = Client()
     c.login(username='othertester', password='password')
     response = c.get('/tester/foo-bar/')
-    assert 404 == response.status_code
+    assert 200 == response.status_code
 
 def test_GET_missing_recipe():
     c = Client()
