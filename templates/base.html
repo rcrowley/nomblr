@@ -43,7 +43,6 @@
 </div>
 <div class="clear"></div>
 <footer>
-	<p>Nomblr is lovingly baked by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
 	<ul>
 	{% if request.user.is_authenticated %}
 		<li><strong>{{ request.user }}</strong></li>
@@ -54,6 +53,7 @@
 		<li><a href="/signup/">Signup</a></li>
 	{% endif %}
 	</ul>
+	<p>Nomblr is lovingly baked by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
 </footer>
 <div id="add" class="overlay" style="display:none;">
 	<div class="content">
