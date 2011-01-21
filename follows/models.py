@@ -25,3 +25,9 @@ class Follow(models.Model):
 
     class Meta(object):
         unique_together = (('follower', 'followee'),)
+
+    def __repr__(self):
+        return '<Follow: {0}>'.format(unicode(self))
+
+    def __unicode__(self):
+        return '{0} -> {1}'.format(self.follower, self.followee)
