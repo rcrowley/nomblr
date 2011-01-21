@@ -262,7 +262,7 @@ form .note:hover {
 	color: #480a0a;
 	opacity: 1;
 	text-decoration: none;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.4)!important;
 }
 .following:hover .static { display: none; }
 .following:hover .unfollow { display: inline; }
