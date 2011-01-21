@@ -11,18 +11,14 @@ import models
 @login_required
 def recipes(request, username=None):
     if username is None:
-
-        # TODO Only recipes request.user can access.  Something in between
-        # wide open:
-        #qs = models.Recipe.objects.all()
-        # and completely private:
-        qs = models.Recipe.objects.filter(owner=request.user)
-        # must eventually be implemented.
-
-        newest_recipes = qs.order_by('-created')[0:3]
+        owners = [f.followee for f in request.user.following.all()]
+        owners.append(request.user)
+        qs = models.Recipe.objects.filter(owner__in=owners) \
+                                  .order_by('-created')
+        newest_recipes = qs[0:3]
         paginator = Paginator(qs, 15)
         recipes = paginator.page(int(request.GET.get('page', 1)))
-        viewed_recipes = []
+        viewed_recipes = [] # TODO
         return render_to_response('browse.html',
                                   {'newest_recipes': newest_recipes,
                                    'recipes': recipes,
