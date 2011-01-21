@@ -2,7 +2,7 @@
 	<section>
 		<a href="/{{ owner }}/" class="avatar"><img src="{{ owner.get_profile.gravatar64 }}" alt="{{ owner }}" /></a>
 		<h4 class="name">@{{ owner }}</h4>
-	{% if owner == request.user %}
+	{% if owner != request.user %}
 		{% if owner in request.user.following %}{# FIXME #}
 			<a href="/{{ owner }}/follow/" class="follow" style="display: none;">+ follow</a>
 			<a href="/{{ owner }}/unfollow/" class="following"><span class="static">following</span> <span class="unfollow">unfollow</span></a>

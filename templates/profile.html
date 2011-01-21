@@ -4,7 +4,7 @@
 	<nav>
 		<h1>{% block title %}Noms from @{{ owner }}{% endblock %}</h1>
 		<div class="paper white">
-			{% if owner == request.user and owner not in request.user.following %}{# FIXME #}
+			{% if owner != request.user and owner not in request.user.following %}{# FIXME #}
 				<div class="paper_top">Like @{{ owner }}&#8217;s noms? <a href="follow/" class="follow">+ follow {{ owner }}</a></div>
 			{% endif %}
 			{% include "recipes.html" %}
