@@ -947,7 +947,7 @@ body > footer ul li { margin-left: 10px; }
 	margin:5px;
 }
 
-.col2.profile .edit-link {
+.col2.profile .edit {
 	background:rgba(41,41,41,0.35);
 	border-radius:20px;
 	-moz-border-radius:20px;
@@ -958,7 +958,7 @@ body > footer ul li { margin-left: 10px; }
 	text-align:center;
 }
 
-.col2.profile .edit-link:hover{
+.col2.profile .edit:hover{
 	background:rgba(41,41,41,0.5);
 	text-decoration:none;
 }

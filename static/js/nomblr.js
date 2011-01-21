@@ -29,9 +29,4 @@ $(function() {
 		return false;
 	});
 
-	$(".profile a.edit").click(function() {
-		$("#edit").show();
-		return false;
-	});
-
 });
