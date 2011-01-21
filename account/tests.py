@@ -28,6 +28,11 @@ def test_UsernameForm_missing_username():
     assert not form.is_valid()
     assert 'username' in form.errors
 
+def test_UsernameForm_blacklisted_username():
+    form = forms.UsernameForm({'username': 'api'})
+    assert not form.is_valid()
+    assert 'username' in form.errors
+
 def test_UsernameForm_invalid_username():
     form = forms.UsernameForm({'username': 'invalid username'})
     assert not form.is_valid()

@@ -52,6 +52,8 @@ class UsernameForm(forms.ModelForm):
 
     def clean_username(self):
         username = self.cleaned_data['username']
+        if username in settings.USERNAME_BLACKLIST:
+            raise forms.ValidationError('That username is not allowed.')
         try:
             User.objects.get(username=username)
         except User.DoesNotExist:
