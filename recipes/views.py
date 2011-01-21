@@ -30,12 +30,7 @@ def recipes(request, username=None):
                                   context_instance=RequestContext(request))
     else:
         owner = get_object_or_404(User, username=username)
-
-        # TODO Can request.user access owner?
-        if owner != request.user:
-            raise Http404
         paginator = Paginator(models.Recipe.objects.filter(owner=owner), 15)
-
         recipes = paginator.page(int(request.GET.get('page', 1)))
         return render_to_response('profile.html',
                                   {'owner': owner,
@@ -45,11 +40,6 @@ def recipes(request, username=None):
 @login_required
 def recipe(request, username, slug):
     owner = get_object_or_404(User, username=username)
-
-    # TODO Can request.user access owner?
-    if owner != request.user:
-        raise Http404
-
     recipe = get_object_or_404(models.Recipe, owner=owner, slug=slug)
     if 'POST' == request.method:
         form = forms.RecipeForm(request.user, request.POST, instance=recipe)
