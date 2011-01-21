@@ -99,6 +99,12 @@ USERNAME_BLACKLIST = (
     'you',
 )
 
+RECIPE_BLACKLIST = (
+    'follow',
+    'friends',
+    'unfollow',
+)
+
 HAYSTACK_SITECONF = 'nomblr.search_site'
 if 'Darwin' == os.uname()[0]:
     HAYSTACK_SEARCH_ENGINE = 'whoosh'

@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 
 import models
 
@@ -13,6 +14,12 @@ class RecipeForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         self.user = user
         super(RecipeForm, self).__init__(*args, **kwargs)
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if name in settings.RECIPE_BLACKLIST:
+            raise forms.ValidationError('That recipe name is not allowed.')
+        return name
 
     def save(self, commit=True):
         recipe = super(RecipeForm, self).save(commit=False)

@@ -16,6 +16,13 @@ def test_RecipeForm_valid():
                                    'text': 'Test ingredients and directions.'})
     assert form.is_valid()
 
+def test_RecipeForm_blacklisted_name():
+    user = User.objects.get(username='tester')
+    form = forms.RecipeForm(user, {'name': 'follow',
+                                   'text': 'Test ingredients and directions.'})
+    assert not form.is_valid()
+    assert 'name' in form.errors
+
 def test_RecipeForm_missing_name():
     user = User.objects.get(username='tester')
     form = forms.RecipeForm(user, {'text': 'Test ingredients and directions.'})
