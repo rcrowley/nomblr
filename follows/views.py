@@ -14,7 +14,7 @@ def follow(request, username):
     models.Follow.objects.create(follower=request.user,
                                  followee=other)
     if request.is_ajax():
-        return HttpResponse()
+        return HttpResponse(status=204)
     else:
         return redirect('/{0}/'.format(other.username))
 
@@ -25,6 +25,6 @@ def unfollow(request, username):
     other = get_object_or_404(User, username=username)
     request.user.following.filter(followee=other).delete()
     if request.is_ajax():
-        return HttpResponse()
+        return HttpResponse(status=204)
     else:
         return redirect('/{0}/'.format(other.username))
