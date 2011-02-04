@@ -52,6 +52,8 @@ urlpatterns = patterns('',
     (r'^(?P<username>[^/]+)/follow/$', 'nomblr.follows.views.follow'),
     (r'^(?P<username>[^/]+)/unfollow/$', 'nomblr.follows.views.unfollow'),
     (r'^(?P<username>[^/]+)/(?P<slug>[^/]+)/$', 'nomblr.recipes.views.recipe'),
+    (r'^(?P<username>[^/]+)/(?P<slug>[^/]+)/delete/$',
+     'nomblr.recipes.views.delete'),
 
     # Homepage.
     (r'^$', 'nomblr.views.index'),

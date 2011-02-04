@@ -140,3 +140,17 @@ def test_POST_recipe_rename():
                        'text': '* foo\n* bar\n\n1. baz\n1. bang'})
     assert 302 == response.status_code
     assert 'http://testserver/tester/foo-bar-baz/' == response['Location']
+
+def test_DELETE_recipe():
+    c = Client()
+    c.login(username='tester', password='password')
+    c.post('/', {'name': 'Deletable', 'text': 'Deletable.'})
+    user = User.objects.get(username='tester')
+    models.Recipe.objects.create(owner=user, name='Delete me', text='')
+    response = c.delete('/tester/delete-me/')
+    assert 302 == response.status_code
+    try:
+        models.Recipe.objects.get(owner=user, slug='delete-me')
+        assert False
+    except models.Recipe.DoesNotExist:
+        assert True

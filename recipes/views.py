@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from django.http import Http404
+from django.http import Http404, HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 
@@ -49,6 +49,8 @@ def recipe(request, username, slug):
             recipe = form.save()
             if slug != recipe.slug:
                 return redirect(recipe)
+    elif 'DELETE' == request.method:
+        return delete(request, username, slug)
     else:
         form = forms.RecipeForm(request.user, instance=recipe)
     if request.is_ajax():
@@ -59,3 +61,15 @@ def recipe(request, username, slug):
                               {'form': form,
                                'recipe': recipe},
                               context_instance=RequestContext(request))
+
+@login_required
+def delete(request, username, slug):
+    if request.method not in ('POST', 'DELETE'):
+        return HttpResponseNotAllowed(['POST', 'DELETE'])
+    owner = get_object_or_404(User, username=username)
+    recipe = get_object_or_404(models.Recipe, owner=owner, slug=slug)
+    recipe.delete()
+    if request.is_ajax():
+        return HttpResponse(status=204)
+    else:
+        return redirect('/')
