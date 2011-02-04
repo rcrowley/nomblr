@@ -10,6 +10,9 @@ import models
 
 @login_required
 def recipes(request, username=None):
+    """
+    List recipes, possibly filtered to just one user.
+    """
     if username is None:
         owners = [f.followee for f in request.user.following.all()]
         owners.append(request.user)
@@ -35,6 +38,9 @@ def recipes(request, username=None):
 
 @login_required
 def recipe(request, username, slug):
+    """
+    View, edit, or delete a single recipe.
+    """
     owner = get_object_or_404(User, username=username)
     recipe = get_object_or_404(models.Recipe, owner=owner, slug=slug)
     if 'POST' == request.method:

@@ -7,8 +7,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+    # For your eyes only.
     (r'^admin/', include(admin.site.urls)),
 
+    # Authentication.
     (r'^signup/$', 'nomblr.views.signup'),
     (r'^signup/(?P<invite_code>[0-9a-f]{40})/$', 'nomblr.views.signup'),
     (r'^login/$', 'django.contrib.auth.views.login',
@@ -16,6 +18,7 @@ urlpatterns = patterns('',
     (r'^logout/$', 'nomblr.views.logout',
      {'template_name': 'logged_out.html'}),
 
+    # Passwords.
     (r'^account/password/reset/$',
      'django.contrib.auth.views.password_reset',
      {'template_name': 'password_reset_form.html',
@@ -30,6 +33,7 @@ urlpatterns = patterns('',
      'django.contrib.auth.views.password_reset_complete',
      {'template_name': 'password_reset_complete.html'}),
 
+    # Email addresses and usernames.
     (r'^account/$', 'nomblr.account.views.account'),
     (r'^account/email/$', 'nomblr.account.views.email'),
     (r'^account/email/(?P<token>.+)/$',
@@ -41,17 +45,20 @@ urlpatterns = patterns('',
      {'template_name': 'password_change_done.html'}),
     (r'^account/username/$', 'nomblr.account.views.username'),
 
-    # It's important username-based routes follow specific routes and for the
-    # recipe slug route to follow more specific username-based routes.
+    # Recipes.  It's important username-based routes follow specific routes
+    # and for the recipe slug route to follow more specific username-based
+    # routes.
     (r'^(?P<username>[^/]+)/$', 'nomblr.recipes.views.recipes'),
     (r'^(?P<username>[^/]+)/follow/$', 'nomblr.follows.views.follow'),
     (r'^(?P<username>[^/]+)/unfollow/$', 'nomblr.follows.views.unfollow'),
     (r'^(?P<username>[^/]+)/(?P<slug>[^/]+)/$', 'nomblr.recipes.views.recipe'),
 
+    # Homepage.
     (r'^$', 'nomblr.views.index'),
 
 )
 
+# Static file serving for development.
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve',
