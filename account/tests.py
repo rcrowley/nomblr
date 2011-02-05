@@ -38,13 +38,25 @@ def test_UsernameForm_invalid_username():
     assert not form.is_valid()
     assert 'username' in form.errors
 
+def test_FacebookSessionForm_valid():
+    form = forms.FacebookSessionForm({'facebook_id': '3101064',
+                                      'facebook_token': '195241420501723|2.pt6jSDUVTpdaJAXHJElLdg__.3600.1296867600-3101064|Ho71oAPel6ectNVSECtvzge4UgM',
+                                      'facebook_expiry': 2147483647})
+    assert form.is_valid()
+
+def test_FacebookSessionForm_invalid_expiry():
+    form = forms.FacebookSessionForm({'facebook_id': '3101064',
+                                      'facebook_token': '195241420501723|2.pt6jSDUVTpdaJAXHJElLdg__.3600.1296867600-3101064|Ho71oAPel6ectNVSECtvzge4UgM',
+                                      'facebook_expiry': 99999999999999999999})
+    assert not form.is_valid()
+    assert 'facebook_expiry' in form.errors
+
 def test_Profile_create():
     try:
         user = User(username='testprofile')
         user.save()
         assert user == user.get_profile().user
     except models.Profile.DoesNotExist as e:
-        print(repr(e))
         assert False
 
 def test_GET_account():
@@ -115,4 +127,18 @@ def test_POST_invalid_username():
     c = Client()
     c.login(username='tester', password='password')
     response = c.post('/account/username/', {'username': 'invalid username'})
+    assert 200 == response.status_code
+
+def test_GET_friends():
+    c = Client()
+    c.login(username='tester', password='password')
+    response = c.get('/friends/')
+    assert 200 == response.status_code
+
+def test_POST_friends():
+    c = Client()
+    c.login(username='tester', password='password')
+    response = c.post('/friends/', {'facebook_id': '3101064',
+                                    'facebook_token': '195241420501723|2.pt6jSDUVTpdaJAXHJElLdg__.3600.1296867600-3101064|Ho71oAPel6ectNVSECtvzge4UgM',
+                                    'facebook_expiry': 2147483647})
     assert 200 == response.status_code

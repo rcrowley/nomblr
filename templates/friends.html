@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<nav>
+		<h1>{% block title %}Friends{% endblock %}</h1>
+		<div class="paper white">
+			{% if facebook_login %}
+				<div class="paper_top"><fb:login-button>Find your friends on Facebook</fb:login-button></div>
+				<div id="fb-root"></div>
+			{% endif %}
+			<h2>Following</h2>
+			<ol>
+			{% for user in following %}
+				<li>{{ user }}</li>
+			{% endfor %}
+			</ol>
+			<h2>Followers</h2>
+			<ol>
+			{% for user in followers %}
+				<li>{{ user }}</li>
+			{% endfor %}
+			</ol>
+			<h2>Facebook friends on Nomblr</h2>
+			<ol>
+			{% for profile in facebook_friends %}
+				<li>{{ profile }}</li>
+			{% endfor %}
+			</ol>
+		</div>
+	</nav>
+{% endblock %}
+
+{% block extrajs %}
+	{% if facebook_login %}
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
+		<script>
+		FB.init({ 
+			appId: "195241420501723",
+			cookie: true, 
+			status: true,
+			xfbml: true 
+		});
+		FB.Event.subscribe('auth.sessionChange', function(response) {
+			if ("connected" == response.status) {
+				console.log(response.session.access_token);
+				console.log(response.session.uid);
+				console.log(response.session.expires);
+				$("#facebook-id").val(response.session.uid);
+				$("#facebook-token").val(response.session.access_token);
+				$("#facebook-expiry").val(response.session.expires);
+				$("#facebook-session").submit();
+			}
+		});
+		</script>
+		<form id="facebook-session" action="" method="POST" style="display: none;">
+			{% csrf_token %}
+			<input id="facebook-id" name="facebook_id" />
+			<input id="facebook-token" name="facebook_token" />
+			<input id="facebook-expiry" name="facebook_expiry" />
+		</form>
+	{% endif %}
+{% endblock %}

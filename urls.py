@@ -45,6 +45,9 @@ urlpatterns = patterns('',
      {'template_name': 'password_change_done.html'}),
     (r'^account/username/$', 'nomblr.account.views.username'),
 
+    # Friends.
+    (r'^friends/$', 'nomblr.account.views.friends'),
+
     # Recipes.  It's important username-based routes follow specific routes
     # and for the recipe slug route to follow more specific username-based
     # routes.

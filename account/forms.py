@@ -1,3 +1,4 @@
+from datetime import datetime
 from django import forms
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -69,3 +70,25 @@ class UsernameForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+class FacebookSessionForm(forms.ModelForm):
+    facebook_id = forms.CharField(max_length=255)
+    facebook_token = forms.CharField(max_length=255)
+    facebook_expiry = forms.IntegerField()
+
+    class Meta(object):
+        model = models.Profile
+        fields = ('facebook_id', 'facebook_token', 'facebook_expiry')
+
+    def clean_facebook_expiry(self):
+        expiry = self.cleaned_data['facebook_expiry']
+        try:
+            return datetime.fromtimestamp(expiry)
+        except ValueError:
+            raise forms.ValidationError('{0} not a timestamp.'.format(expiry))
+
+    def save(self, commit=True):
+        profile = super(FacebookSessionForm, self).save(commit=False)
+        if commit:
+            profile.save()
+        return profile
