@@ -727,9 +727,9 @@ body > footer ul li { margin-left: 10px; }
 	margin-left: 3px;
 }
 
-/* Tags & Friend Search Buttons Global */
+/* Tags, Delete & Friend Search Buttons Global */
 
-.tags a, .navbtns a {
+.tags a, .navbtns a, .nom-delete {
 	background: gradient(linear, 0% 0%, 0% 100%, from(#e3e3e3), to(#c1c1c1));
 	background: -moz-linear-gradient(100% 100% 90deg, #c1c1c1, #e3e3e3);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e3e3e3), to(#c1c1c1));
@@ -743,7 +743,7 @@ body > footer ul li { margin-left: 10px; }
 	display: inline-block;
 	font-size: 11px;
 	margin: 0 0 3px 5px;
-	padding: 3px 7px;
+	padding: 3px 11px;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 	white-space: nowrap;
 }
@@ -753,7 +753,7 @@ body > footer ul li { margin-left: 10px; }
 	text-decoration: none;
 }
 
-.tags a:active, .navbtns a:active {
+.tags a:active, .navbtns a:active, .nom-delete:active {
 	border-color: #aaadad;
 	box-shadow: inset 0 5px 5px rgba(0, 0, 0, .18);
 	-moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, .18);
@@ -769,6 +769,45 @@ body > footer ul li { margin-left: 10px; }
 	padding: 1px 2px;
 	position: relative;
 	top: -1px;
+}
+
+li .nom-delete{
+	opacity:0;
+	transition: opacity .3s linear;
+	-moz-transition: opacity .3s linear;
+	-webkit-transition: opacity .3s linear;
+}
+
+li:hover .nom-delete{
+	opacity:1;
+	transition: opacity .6s linear;
+	-moz-transition: opacity .6s linear;
+	-webkit-transition: opacity .6s linear;
+}
+
+.nom-delete{
+	background: gradient(linear, 0% 0%, 0% 100%, from(#fb1f1f), to(#811c1c));
+	background: -moz-linear-gradient(100% 100% 90deg, #811c1c, #fb1f1f);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fb1f1f), to(#811c1c));
+	border-color: #9d6c6b;
+	color:#fff;
+	float:right;
+	position:relative;
+	top:7px;
+	text-shadow:0 -1px rgba(157, 50, 50, .9);
+}
+
+.nom-delete:hover{
+	background: gradient(linear, 0% 0%, 0% 100%, from(#ff0000), to(#9a2222));
+	background: -moz-linear-gradient(100% 100% 90deg, #9a2222, #ff0000);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff0000), to(#9a2222));
+	color:#fff;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+.nom-delete:active{
+	border-color:#9d6c6b;
 }
 
 /* Settings forms */
