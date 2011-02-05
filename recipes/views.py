@@ -72,4 +72,4 @@ def delete(request, username, slug):
     if request.is_ajax():
         return HttpResponse(status=204)
     else:
-        return redirect('/')
+        return redirect('/{0}/'.format(owner))
