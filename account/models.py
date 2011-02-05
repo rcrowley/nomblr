@@ -22,6 +22,8 @@ class Profile(models.Model):
         return self.gravatar(64)
 
 def create_profile(sender, instance, created, **kwargs):
-    if created:
+    try:
         Profile(user=instance).save()
+    except IntegrityError:
+        pass
 post_save.connect(create_profile, sender=User)

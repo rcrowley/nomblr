@@ -5,6 +5,10 @@ from django.template import Context, loader
 import hashlib
 import hmac
 
+# This line causes IntegrityError to be raised in `models.create_profile`,
+# which is called via a signal.
+import models
+
 class EmailForm(forms.ModelForm):
     email = forms.EmailField(label='Email')
 
