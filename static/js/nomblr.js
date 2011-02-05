@@ -25,6 +25,7 @@ $(function() {
 	$("a.nom").click(function() {
 		$("#recipe").load($(this).attr("href"), function() {
 			$("#recipe").show();
+			scroll(0, 0);
 		});
 		return false;
 	});
