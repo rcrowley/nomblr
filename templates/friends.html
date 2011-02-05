@@ -5,9 +5,13 @@
 		<h1>{% block title %}Friends{% endblock %}</h1>
 		<div class="paper white">
 			{% if facebook_login %}
-				<div class="paper_top"><fb:login-button>Find your friends on Facebook</fb:login-button></div>
+				<div class="paper_top">Connect and share your recipes <fb:login-button>Find your friends on Facebook</fb:login-button></div>
 				<div id="fb-root"></div>
 			{% endif %}
+			<ul class="paper-menu">
+				<li><a href="#" class="selected">Following</a></li>
+				<li><a href="#">Followers</a></li>
+			</ul>
 			<h2>Following</h2>
 			<ol>
 			{% for user in following %}
@@ -28,6 +32,55 @@
 			</ol>
 		</div>
 	</nav>
+	<section id="fblist" style="right:210px;">
+		<a href="#" class="follow all">+all</a>
+		<h3>Found 23</h3>
+		<ul>
+			<li>
+				<a href="#" class="avatar"><img src="/static/images/test/pancakes.jpg" alt="Mikhail Pancenko" /></a>
+				<section>
+					<a href="#" class="name">Mikhail Pancenko</a>
+					<span class="user">@pancakes</span>
+					<span class="action"><a href="#" class="follow">+follow</a></span>
+				</section>
+			</li>
+			<li>
+				<a href="#" class="avatar"><img src="/static/images/test/pancakes.jpg" alt="Mikhail Pancenko" /></a>
+				<section>
+					<a href="#" class="name">Mikhail Pancenko</a>
+					<span class="user">@pancakes</span>
+					<span class="action"><a href="#" class="follow">+follow</a></span>
+				</section>
+			</li>
+			<li>
+				<a href="#" class="avatar"><img src="/static/images/test/pancakes.jpg" alt="Mikhail Pancenko" /></a>
+				<section>
+					<a href="#" class="name">Mikhail Pancenko</a>
+					<span class="user">@pancakes</span>
+					<span class="action"><a href="#" class="follow">+follow</a></span>
+				</section>
+			</li>
+			<li>
+				<a href="#" class="avatar"><img src="/static/images/test/pancakes.jpg" alt="Mikhail Pancenko" /></a>
+				<section>
+					<a href="#" class="name">Mikhail Pancenko</a>
+					<span class="user">@pancakes</span>
+					<span class="action"><a href="#" class="follow">+follow</a></span>
+				</section>
+			</li>
+			<li>
+				<a href="#" class="avatar"><img src="/static/images/test/pancakes.jpg" alt="Mikhail Pancenko" /></a>
+				<section>
+					<a href="#" class="name">Mikhail Pancenko</a>
+					<span class="user">@pancakes</span>
+					<span class="action"><a href="#" class="follow">+follow</a></span>
+				</section>
+			</li>
+			<li class="navbtns">
+				<a href="#" class="prev">Previous</a> <a href="#" class="next">Next</a>
+			</li>
+		</ul>
+	</section>
 {% endblock %}
 
 {% block extrajs %}
