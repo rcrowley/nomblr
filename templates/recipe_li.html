@@ -4,7 +4,7 @@
 		<a href="/{{ recipe.owner }}/{{ recipe.slug }}/" class="nom">{{ recipe.name }}</a>
 		<a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a>
 	</h3>
-	{% if recipe.owner == request.user %}
+	{% if recipe.owner == request.user or recipe.owner == recipe.user.username %}
 		<form method="POST" action="/{{ recipe.owner }}/{{ recipe.slug }}/delete/">
 			{% csrf_token %}
 			<input type="submit" value="Delete nom" class="nom-delete" />
