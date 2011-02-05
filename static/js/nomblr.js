@@ -1,11 +1,16 @@
 $(function() {
+	var add = false, recipe = false;
 
 	$("body header a.add").click(function() {
+		var r = $("#recipe");
+		if (recipe = "none" != r.css("display")) { r.hide(); }
 		$("#add").show();
+		scroll(0, 0);
 		return false;
 	});
 	$("#add a.close").click(function() {
 		$("#add").hide();
+		if (recipe) { $("#recipe").show(); }
 		return false;
 	});
 
