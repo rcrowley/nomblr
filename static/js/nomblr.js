@@ -57,8 +57,23 @@ $(function() {
 
 	$("a.nom").click(function() {
 		$("#ajax").load($(this).attr("href"), function() {
-//			$("#recipe").show();
 			scroll(0, 0);
+		});
+		return false;
+	});
+
+	$("form.nom-delete").submit(function() {
+		var li = $(this).parents("li");
+		$.ajax({
+			data: {},
+			dataType: "json",
+			error: function(xhr, textStatus, errorThrown) {
+				alert("Oops!  There was a problem deleting your nom.  (" +
+					xhr.status + ")");
+			},
+			success: function(data, textStatus, xhr) { li.remove(); },
+			type: "DELETE",
+			url: $(this).attr("data-url")
 		});
 		return false;
 	});

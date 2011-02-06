@@ -743,7 +743,7 @@ a.fullscreen-off:hover { opacity: 1; }
 
 /* Tags, Delete & Friend Search Buttons Global */
 
-.tags a, .navbtns a, .nom-delete {
+.tags a, .navbtns a, form.nom-delete input {
 	background: gradient(linear, 0% 0%, 0% 100%, from(#e3e3e3), to(#c1c1c1));
 	background: -moz-linear-gradient(100% 100% 90deg, #c1c1c1, #e3e3e3);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e3e3e3), to(#c1c1c1));
@@ -767,7 +767,7 @@ a.fullscreen-off:hover { opacity: 1; }
 	text-decoration: none;
 }
 
-.tags a:active, .navbtns a:active, .nom-delete:active {
+.tags a:active, .navbtns a:active, form.nom-delete input:active {
 	border-color: #aaadad;
 	box-shadow: inset 0 5px 5px rgba(0, 0, 0, .18);
 	-moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, .18);
@@ -785,21 +785,21 @@ a.fullscreen-off:hover { opacity: 1; }
 	top: -1px;
 }
 
-li .nom-delete{
+li form.nom-delete input {
 	opacity:0;
 	transition: opacity .3s linear;
 	-moz-transition: opacity .3s linear;
 	-webkit-transition: opacity .3s linear;
 }
 
-li:hover .nom-delete{
+li:hover form.nom-delete input {
 	opacity:1;
 	transition: opacity .6s linear;
 	-moz-transition: opacity .6s linear;
 	-webkit-transition: opacity .6s linear;
 }
 
-.nom-delete{
+form.nom-delete input {
 	background: gradient(linear, 0% 0%, 0% 100%, from(#fb1f1f), to(#811c1c));
 	background: -moz-linear-gradient(100% 100% 90deg, #811c1c, #fb1f1f);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fb1f1f), to(#811c1c));
@@ -811,7 +811,7 @@ li:hover .nom-delete{
 	text-shadow:0 -1px rgba(157, 50, 50, .9);
 }
 
-.nom-delete:hover{
+form.nom-delete input:hover {
 	background: gradient(linear, 0% 0%, 0% 100%, from(#ff0000), to(#9a2222));
 	background: -moz-linear-gradient(100% 100% 90deg, #9a2222, #ff0000);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff0000), to(#9a2222));
@@ -820,7 +820,7 @@ li:hover .nom-delete{
 	text-decoration:none;
 }
 
-.nom-delete:active{
+form.nom-delete input:active {
 	border-color:#9d6c6b;
 }
 
