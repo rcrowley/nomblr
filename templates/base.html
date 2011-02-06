@@ -34,7 +34,7 @@
 	{% if request.user.is_authenticated %}
 		<li><strong>{{ request.user }}</strong></li>
 		<li><a href="/account/">Account</a></li>
-		<li><form action="/logout/" method="POST">{% csrf_token %}<input type="submit" value="Logout" class="link"></form></li>
+		<li><form action="/logout/" method="POST">{% csrf_token %}<input name="next" type="hidden" value="/login/" /><input type="submit" value="Logout" class="link" /></form></li>
 	{% else %}
 		<li><a href="/login/">Login</a></li>
 		<li><a href="/signup/">Signup</a></li>
