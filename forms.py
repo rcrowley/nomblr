@@ -1,5 +1,6 @@
 from django import forms
 from django.conf import settings
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 
 import account.forms
@@ -37,3 +38,25 @@ class SignupForm(account.forms.EmailForm, account.forms.UsernameForm):
         if commit:
             user.save()
         return user
+
+class FlexibleAuthenticationForm(AuthenticationForm):
+    """
+    Allow authentication with a username or an email address.  The stock
+    Django implementation only accepts usernames.
+    """
+
+    def clean_username(self, *args, **kwargs):
+        """
+        If the username field actually contains an email address, switch
+        it out for the matching username.
+        """
+        username = self.cleaned_data['username']
+        if -1 == username.find('@'):
+            return username
+        try:
+            user = User.objects.get(email=username)
+            return user.username
+        except User.DoesNotExist:
+            raise forms.ValidationError('Please enter a correct username '
+                                        'and password. Note that both '
+                                        'fields are case-sensitive.')

@@ -105,6 +105,30 @@ def test_SignupForm_invalid_invite_code():
     assert not form.is_valid()
     assert 'invite_code' in form.errors
 
+def test_FlexibleAuthenticationForm_valid_username():
+    form = forms.FlexibleAuthenticationForm(None,
+                                            {'username': 'tester',
+                                             'password': 'password'})
+    assert form.is_valid()
+
+def test_FlexibleAuthenticationForm_valid_email():
+    form = forms.FlexibleAuthenticationForm(None,
+                                            {'username': 'tester@nomblr.com',
+                                             'password': 'password'})
+    assert form.is_valid()
+
+def test_FlexibleAuthenticationForm_invalid_username():
+    form = forms.FlexibleAuthenticationForm(None,
+                                            {'username': 'missing',
+                                             'password': 'password'})
+    assert not form.is_valid()
+
+def test_FlexibleAuthenticationForm_invalid_email():
+    form = forms.FlexibleAuthenticationForm(None,
+                                            {'username': 'missing@nomblr.com',
+                                             'password': 'password'})
+    assert not form.is_valid()
+
 def test_GET_index():
     c = Client()
     c.login(username='tester', password='password')

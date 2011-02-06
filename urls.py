@@ -3,6 +3,8 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 import os.path
 
+import forms
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -14,7 +16,8 @@ urlpatterns = patterns('',
     (r'^signup/$', 'nomblr.views.signup'),
     (r'^signup/(?P<invite_code>[0-9a-f]{40})/$', 'nomblr.views.signup'),
     (r'^login/$', 'django.contrib.auth.views.login',
-     {'template_name': 'login.html'}),
+     {'authentication_form': forms.FlexibleAuthenticationForm,
+      'template_name': 'login.html'}),
     (r'^logout/$', 'nomblr.views.logout',
      {'template_name': 'logged_out.html'}),
 
