@@ -638,9 +638,8 @@ body > footer ul li { margin-left: 10px; }
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-box-shadow: 0 1px rgba(255, 255, 255, .7);
-	height: 440px;
+	height:auto;
 	margin: 0 40px;
-	overflow: auto;
 	padding: 30px;
 	position: relative;
 }
