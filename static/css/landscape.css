@@ -6,6 +6,6 @@
 	font-size: 30px;
 }
 
-#recipe .recfull ul, #recipe .recfull p {
+#recipe .recfull ul, #recipe .recfull p, #recipe .recfull ol {
 	font-size: 24px;
 }

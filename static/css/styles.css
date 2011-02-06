@@ -645,6 +645,10 @@ body > footer ul li { margin-left: 10px; }
 	position: relative;
 }
 
+#recipe .recipe li{
+	margin-bottom:10px;
+}
+
 .fullscreen {
 	background: url(/static/images/global/fullscreen.png) 0 0 no-repeat;
 	height: 19px;
