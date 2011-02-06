@@ -43,18 +43,9 @@
 	<p>Nomblr is lovingly baked by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
 </footer>
 <div id="add" class="overlay" style="display:none;">
-	<div class="content">
-		<a href="#" class="close" title="close">Close</a>
-		<form action="/" method="POST">
-			{% csrf_token %}
-			<label for="id_name"><span class="left"></span><span class="right">Name of your dish</span></label> <input id="id_name" type="text" name="name" maxlength="255" />
-			<label for="id_text"><span class="left"></span><span class="right">Recipe</span></label> <textarea id="id_text" rows="10" cols="40" name="text"></textarea>
-			<span class="submit greenborder"><input type="submit" value="Save this dish" class="green"></span>
-		</form>
-	</div>
+	{% with None as form %}{% include "recipe_form.html" %}{% endwith %}
 </div>
-<div id="recipe" class="overlay" style="display: none;">
-</div>
+<div id="ajax"></div>
 <script src="/static/js/jquery-1.4.4.min.js"></script>
 <script src="/static/js/nomblr.js"></script>
 {% block extrajs %}{% endblock %}

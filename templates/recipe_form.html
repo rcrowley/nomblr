@@ -1,0 +1,22 @@
+{# Hand-coded <input> and <textarea> tags are for base.html. #}
+<div class="content">
+	<a href="#" class="close" title="close">Close</a>
+	<form action="/" method="POST">
+		{% csrf_token %}
+		<label for="id_name"><span class="left"></span><span class="right">Name of your dish</span></label> 
+		{% if form %}
+			{{ form.name.errors }}
+			{{ form.name }}
+		{% else %}
+			<input id="id_name" type="text" name="name" maxlength="255" />
+		{% endif %}
+		<label for="id_text"><span class="left"></span><span class="right">Recipe</span></label>
+		{% if form %}
+			{{ form.text.errors }}
+			{{ form.text }}
+		{% else %}
+			<textarea id="id_text" rows="10" cols="40" name="text"></textarea>
+		{% endif %}
+		<span class="submit greenborder"><input type="submit" value="Save this dish" class="green"></span>
+	</form>
+</div>

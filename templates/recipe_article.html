@@ -1,24 +1,24 @@
 {% load mdown %}
 
-<article class="content">
-	{% if request.is_ajax %}
-		<a href="#" class="close" title="close">Close</a>
-	{% endif %}
-	<h1><a href="/{{ recipe.owner }}/"><img src="{{ recipe.owner.get_profile.gravatar64 }}" alt="@{{ recipe.owner }}"></a> <span>{% block title %}{{ recipe.name }}{% endblock %}</span></h1>
-	<p><label><span class="left"></span><span class="right">Recipe</span></label></p>
-	<div id="recwindow" class="recipe">
-		<a href="#" class="fullscreen" title="View Fullscreen">View Fullscreen</a>
-		<a href="#" class="fullscreen_off" title="Close Fullscreen">Close Fullscreen</a>
-		{{ recipe.text|mdown }}
-		{% if recipe.owner == request.user %}
-			<footer>
-				<p><a href="#" onclick="document.getElementById('edit').style.display = ''; return false;">Edit</a></p>
-			</footer>
-			<form action="/{{ recipe.owner }}/{{ recipe.slug }}/" method="POST" id="edit"{% if not form.is_bound %} style="display: none;"{% endif %}>
-				{% csrf_token %}
-				{{ form.as_p }}
-				<span class="submit greenborder"><input type="submit" value="Save changes" class="green"></span> or <a href="#" onclick="document.getElementById('edit').style.display = 'none'; return false;">cancel</a>
-			</form>
+<div id="recipe" class="overlay">
+	<article class="content">
+		{% if request.is_ajax %}
+			<a href="#" class="close" title="close">Close</a>
 		{% endif %}
-	</div>
-</article>
+		<h1><a href="/{{ recipe.owner }}/"><img src="{{ recipe.owner.get_profile.gravatar64 }}" alt="@{{ recipe.owner }}"></a> <span>{% block title %}{{ recipe.name }}{% endblock %}</span></h1>
+		<p><label><span class="left"></span><span class="right">Recipe</span></label></p>
+		<div id="fullscreen" class="recipe">
+			<a href="#" class="fullscreen" title="View Fullscreen">View Fullscreen</a>
+			<a href="#" class="fullscreen-off" title="Close Fullscreen">Close Fullscreen</a>
+			{{ recipe.text|mdown }}
+			{% if recipe.owner == request.user %}
+				<footer>
+					<p><a href="#" class="edit">Edit</a></p>
+				</footer>
+			{% endif %}
+		</div>
+	</article>
+</div>
+<div id="edit" class="overlay" style="display: none;">
+	{% include "recipe_form.html" %}
+</div>

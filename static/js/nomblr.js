@@ -1,35 +1,63 @@
 $(function() {
-	var add = false, recipe = false;
+
+	var recipe = false, edit = false;
+	var stack = [];
+	stack._push = stack.push;
+	stack.push = function(selector) {
+		var jq = $(selector);
+		if ("none" != jq.css("display")) {
+			jq.hide();
+			stack._push(selector);
+		}
+	};
+	stack._pop = stack.pop;
+	stack.pop = function() {
+		var selector = stack._pop();
+		$(selector).show();
+	};
 
 	$("body header a.add").click(function() {
-		var r = $("#recipe");
-		if (recipe = "none" != r.css("display")) { r.hide(); }
+		stack.push("#recipe");
+		stack.push("#edit");
 		$("#add").show();
 		scroll(0, 0);
 		return false;
 	});
 	$("#add a.close").click(function() {
 		$("#add").hide();
-		if (recipe) { $("#recipe").show(); }
+		stack.pop();
 		return false;
 	});
 
 	$("#recipe a.close").live("click", function() {
 		$("#recipe").hide();
+		stack.pop();
 		return false;
 	});
 	$("#recipe a.fullscreen").live("click", function() {
-		$("#recwindow").addClass("recfull");
+		$("#fullscreen").addClass("fullscreen");
 		return false;
 	});
-	$("#recipe a.fullscreen_off").live("click", function() {
-		$("#recwindow").removeClass("recfull");
+	$("#recipe a.fullscreen-off").live("click", function() {
+		$("#fullscreen").removeClass("fullscreen");
+		return false;
+	});
+
+	$("#recipe a.edit").live("click", function() {
+		stack.push("#recipe");
+		$("#edit").show();
+		return false;
+	});
+
+	$("#edit a.close").live("click", function() {
+		$("#edit").hide();
+		stack.pop();
 		return false;
 	});
 
 	$("a.nom").click(function() {
-		$("#recipe").load($(this).attr("href"), function() {
-			$("#recipe").show();
+		$("#ajax").load($(this).attr("href"), function() {
+//			$("#recipe").show();
 			scroll(0, 0);
 		});
 		return false;

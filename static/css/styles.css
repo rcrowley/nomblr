@@ -1,5 +1,5 @@
 html {
-	background: url(/static/images/global/wood_bg.jpg) 0 0 repeat;
+background: url(/static/images/global/wood_bg.jpg) 0 0 repeat;
 	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-size: 16px;
 	margin: 0;
@@ -599,11 +599,16 @@ body > footer ul li { margin-left: 10px; }
 
 .overlay .submit { margin-left: 40px; }
 
-.overlay .recipe.recfull footer{
+.overlay .recipe.fullscreen footer{
 	padding-bottom:40px;
 }
 
 /* View Recipe */
+
+#ajax {
+	margin: 0;
+	padding: 0;
+}
 
 #recipe h1 {
 	color: #48481e;
@@ -648,7 +653,7 @@ body > footer ul li { margin-left: 10px; }
 	margin-bottom:10px;
 }
 
-.fullscreen {
+a.fullscreen {
 	background: url(/static/images/global/fullscreen.png) 0 0 no-repeat;
 	height: 19px;
 	opacity: .5;
@@ -658,10 +663,9 @@ body > footer ul li { margin-left: 10px; }
 	top: 13px;
 	width: 19px;
 }
+a.fullscreen:hover { opacity: 1; }
 
-.fullscreen:hover { opacity: 1; }
-
-#recipe .recfull {
+#recipe div.fullscreen {
 	background: rgba(255, 255, 255, 0.9);
 	bottom: 0;
 	height: 100%;
@@ -672,12 +676,11 @@ body > footer ul li { margin-left: 10px; }
 	position: fixed;
 	top: 0;
 }
+#recipe div.fullscreen a.fullscreen { display: none; }
+#recipe a.fullscreen-off { display: none; }
+#recipe div.fullscreen a.fullscreen-off { display: block; }
 
-#recipe .recfull .fullscreen { display: none; }
-#recipe .fullscreen_off { display: none; }
-#recipe .recfull .fullscreen_off { display: block; }
-
-.fullscreen_off {
+a.fullscreen-off {
 	background: url(/static/images/global/fullscreen_off.png) 0 0 no-repeat;
 	height: 19px;
 	opacity: .5;
@@ -687,8 +690,7 @@ body > footer ul li { margin-left: 10px; }
 	top: 13px;
 	width: 19px;
 }
-
-.fullscreen_off:hover { opacity: 1; }
+a.fullscreen-off:hover { opacity: 1; }
 
 /* Main Content */
 
@@ -1044,39 +1046,6 @@ li:hover .nom-delete{
 }
 
 .col2 section:last-child { border-bottom: none; }
-
-#edit label {
-	color: #5c330b;
-	display: block;
-	font-size: 14px;
-	font-weight:normal;
-	margin:0 0 5px;
-	position:static;
-	text-shadow:none;
-}
-
-#edit input[type="text"], #edit input[type="password"], #edit textarea{
-	margin:0 0 15px;
-	width:531px;
-}
-
-#edit .edit {
-	background: url(/static/images/profile/photo.png) 0 0 no-repeat;
-	padding-left: 16px;
-}
-
-#edit .action { margin-top: 15px; }
-
-#edit .action a {
-	font-size: 11px;
-	margin-left: 7px;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
-}
-
-#edit .submit{
-	margin-left:0;
-	margin-right:10px;
-}
 
 .col2.profile .tags a {
 	border-color: #9d9d9d;
