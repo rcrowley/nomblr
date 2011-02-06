@@ -1,7 +1,7 @@
 {# Hand-coded <input> and <textarea> tags are for base.html. #}
 <div class="content">
 	<a href="#" class="close" title="close">Close</a>
-	<form action="{% if form %}/{{ recipe.owner }}/{{ recipe.name }}/{% else %}/{% endif %}" method="POST">
+	<form action="{% if form %}/{{ recipe.owner }}/{{ recipe.slug }}/{% else %}/{% endif %}" method="POST">
 		{% csrf_token %}
 		<label for="id_name"><span class="left"></span><span class="right">Name of your dish</span></label> 
 		{% if form %}
