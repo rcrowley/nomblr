@@ -5,7 +5,7 @@ DEBUG = 'NOMBLR_VIA' not in os.environ
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Richard Crowley', 'r@rcrowley.org'),
+    ('Richard Crowley', 'richard@nomblr.com'),
 )
 MANAGERS = ADMINS
 
