@@ -20,16 +20,16 @@ runserver:
 	python manage.py runserver 0.0.0.0:8000
 
 schema:
-	python manage.py build_solr_schema | sudo tee /etc/solr/conf/schema.xml >/dev/null
+	python manage.py build_solr_schema >schema.xml
 
 syncdb:
-	mv fixtures/initial_data.json fixtures/initial_data.json.sav || true
 	python manage.py syncdb
-	mv fixtures/initial_data.json.sav fixtures/initial_data.json
 
 test:
+	mv fixtures/initial_data.json.test-only fixtures/initial_data.json || true
 	yes | python manage.py clear_index
 	python manage.py test -s
 	yes | python manage.py rebuild_index
+	mv fixtures/initial_data.json fixtures/initial_data.json.test-only
 
 .PHONY: all coverage createdb destroydb reindex run runserver schema syncdb test
