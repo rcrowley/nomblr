@@ -17,14 +17,15 @@ if 'Darwin' == os.uname()[0]:
         }
     }
 else:
+    from bundle_config import config
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'nomblr',
-            'OPTIONS': {
-                'init_command': 'SET storage_engine = InnoDB',
-            },
-            'USER': 'root',
+            'ENGINE': "django.db.backends.postgresql_psycopg2",
+            'NAME': config['postgres']['database'],
+            'OPTIONS': {'autocommit': True},
+            'USER': config['postgres']['username'],
+            'PASSWORD': config['postgres']['password'],
+            'HOST': config['postgres']['host'],
         }
     }
 
