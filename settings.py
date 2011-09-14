@@ -1,7 +1,7 @@
 import os
 import os.path
 
-DEBUG = 'NOMBLR_VIA' not in os.environ
+DEBUG = True # 'NOMBLR_VIA' not in os.environ
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
