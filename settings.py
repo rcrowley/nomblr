@@ -23,7 +23,6 @@ else:
             'NAME': 'nomblr',
             'OPTIONS': {
                 'init_command': 'SET storage_engine = InnoDB',
-                'autocommit': True,
             },
             'USER': 'root',
         }
