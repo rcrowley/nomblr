@@ -1,0 +1,6 @@
+Django
+Markdown
+django-haystack
+django-nose
+nose
+pysolr
