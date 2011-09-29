@@ -12,7 +12,7 @@ class RecipeIndex(indexes.RealTimeSearchIndex):
     name = indexes.CharField(model_attr='name')
     text = indexes.CharField(document=True, use_template=True)
 
-    def get_queryset(self):
+    def index_queryset(self):
         return models.Recipe.objects.all()
 
 site.register(models.Recipe, RecipeIndex)
