@@ -113,7 +113,10 @@ if 'Darwin' == os.uname()[0]:
     HAYSTACK_WHOOSH_PATH = 'nomblr.index'
 else:
     HAYSTACK_SEARCH_ENGINE = 'solr'
-    HAYSTACK_SOLR_URL = 'http://localhost:9000/solr'
+    from bundle_config import config
+    HAYSTACK_SOLR_URL = 'http://{0}:{1}{2}'.format(config['solr']['host'],
+                                                   config['solr']['port'],
+                                                   config['solr']['path'])
 HAYSTACK_ITERATOR_LOAD_PER_QUERY = 15
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 15
 
