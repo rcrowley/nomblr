@@ -117,7 +117,6 @@ else:
     HAYSTACK_SOLR_URL = 'http://{0}:{1}{2}'.format(config['solr']['host'],
                                                    config['solr']['port'],
                                                    config['solr']['path'])
-    print(HAYSTACK_SOLR_URL)
 HAYSTACK_ITERATOR_LOAD_PER_QUERY = 15
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 15
 
