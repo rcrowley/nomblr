@@ -18,28 +18,28 @@ def run(self, parent, blocks):
         lst = sibling
         # make sure previous item is in a p.
         if len(lst) and lst[-1].text and not len(lst[-1]):
-            p = markdown.etree.SubElement(lst[-1], 'p')
+            p = markdown.util.etree.SubElement(lst[-1], 'p')
             p.text = lst[-1].text
             lst[-1].text = ''
         # parse first block differently as it gets wrapped in a p.
-        li = markdown.etree.SubElement(lst, 'li')
+        li = markdown.util.etree.SubElement(lst, 'li')
         self.parser.state.set('looselist')
         firstitem = items.pop(0)
         self.parser.parseBlocks(li, [firstitem])
         self.parser.state.reset()
     else:
         # This is a new list so create parent with appropriate tag.
-        lst = markdown.etree.SubElement(parent, self.TAG)
+        lst = markdown.util.etree.SubElement(parent, self.TAG)
     self.parser.state.set('list')
     # Loop through items in block, recursively parsing each with the
     # appropriate parent.
     for item in items:
-        if item.startswith(' '*markdown.TAB_LENGTH):
+        if item.startswith('   '): # XXX Used to reference markdown.TAB_LENGTH.
             # Item is indented. Parse with last item as parent
             self.parser.parseBlocks(lst[-1], [item])
         else:
             # New item. Create li and parse with it as parent
-            li = markdown.etree.SubElement(lst, 'li')
+            li = markdown.util.etree.SubElement(lst, 'li')
             self.parser.parseBlocks(li, [item])
     self.parser.state.reset()
 setattr(markdown.blockprocessors.OListProcessor, 'run', run)
