@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.db import IntegrityError
+from django.db import transaction, IntegrityError
 from django.test import Client
 
 import forms
@@ -17,6 +17,7 @@ def test_Follow_create():
                                      followee=othertester)
         assert False
     except IntegrityError:
+        transaction.rollback()
         assert True
     assert 1 == len(tester.following.all())
     assert 0 == len(othertester.following.all())

@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.db import models, IntegrityError
+from django.db import models, transaction, IntegrityError
 from django.db.models.signals import post_save
 import hashlib
 
@@ -22,8 +22,9 @@ class Profile(models.Model):
         return self.gravatar(64)
 
 def create_profile(sender, instance, created, **kwargs):
-    try:
-        Profile(user=instance).save()
-    except IntegrityError:
-        pass
+    if created:
+        try:
+            Profile(user=instance).save()
+        except IntegrityError:
+            transaction.rollback()
 post_save.connect(create_profile, sender=User)
