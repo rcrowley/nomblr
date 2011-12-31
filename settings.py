@@ -17,10 +17,16 @@ if 'Darwin' == os.uname()[0]:
         }
     }
 else:
-    from bundle_config import config
+    try:
+        from bundle_config import config
+    except ImportError:
+        config = {'postgres': {'database': 'nomblr',
+                               'host': 'localhost',
+                               'password': 'nom',
+                               'username': 'nomblr'}}
     DATABASES = {
         'default': {
-            'ENGINE': "django.db.backends.postgresql_psycopg2",
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': config['postgres']['database'],
             'OPTIONS': {'autocommit': True},
             'USER': config['postgres']['username'],
@@ -113,7 +119,12 @@ if 'Darwin' == os.uname()[0]:
     HAYSTACK_WHOOSH_PATH = 'nomblr.index'
 else:
     HAYSTACK_SEARCH_ENGINE = 'solr'
-    from bundle_config import config
+    try:
+        from bundle_config import config
+    except ImportError:
+        config = {'solr': {'host': 'localhost',
+                           'path': '/solr',
+                           'port': 8080}}
     HAYSTACK_SOLR_URL = 'http://{0}:{1}{2}'.format(config['solr']['host'],
                                                    config['solr']['port'],
                                                    config['solr']['path'])
