@@ -16,13 +16,21 @@
 		<h1><a href="/">Nomblr</a></h1>
 		{% if request.user.is_authenticated %}
 			<menu>
-				<li><a href="#" class="add">Add a nom</a></li>
-				<li><a href="/"{% if "/" == request.META.PATH_INFO %} class="selected"{% endif %}>Browse noms</a></li>
-				<li><a href="/{{ request.user }}/"{% if owner == request.user and recipes %} class="selected"{% endif %}>Your noms</a></li>
-				<li><a href="/friends/"{% if "/friends/" == request.META.PATH_INFO %} class="selected"{% endif %}>Friends</a></li>
+				<li><a href="/"{% if "/" == request.META.PATH_INFO %} class="selected"{% endif %}>Browse Recipes</a></li>
+				<li><a href="/{{ request.user }}/"{% if owner == request.user and recipes %} class="selected"{% endif %}>Your Recipes</a></li>
+				<li><a href="#" class="add">Add a Recipe</a></li>
 			</menu>
-			<form action="/" method="GET"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Search for noms"></form>
+			<form action="/" method="GET" style="display:none;"><input id="q" name="q" type="text" value="{{ request.GET.q }}" placeholder="Search for noms"></form>
 		{% endif %}
+		<menu class="nav-r">
+		{% if request.user.is_authenticated %}
+			<li class="acct"><a href="/account/"{% if "/account/" == request.META.PATH_INFO %} class="selected"{% endif %} title="Your Account">Account</a></li>
+			<li><form action="/logout/" method="POST">{% csrf_token %}<input name="next" type="hidden" value="/login/" /><input type="submit" value="Logout" class="link logout" title="Logout" /></form></li>
+		{% else %}
+			<li><a href="/login/">Login</a></li>
+			<li><a href="/signup/">Signup</a></li>
+		{% endif %}
+		</menu>
 	</div>
 </header>
 <div id="content">
@@ -30,16 +38,6 @@
 </div>
 <div class="clear"></div>
 <footer>
-	<ul>
-	{% if request.user.is_authenticated %}
-		<li><strong>{{ request.user }}</strong></li>
-		<li><a href="/account/">Account</a></li>
-		<li><form action="/logout/" method="POST">{% csrf_token %}<input name="next" type="hidden" value="/login/" /><input type="submit" value="Logout" class="link" /></form></li>
-	{% else %}
-		<li><a href="/login/">Login</a></li>
-		<li><a href="/signup/">Signup</a></li>
-	{% endif %}
-	</ul>
 	<p>Nomblr is lovingly baked by <a href="http://rcrowley.org/">Richard</a> and <a href="http://capwatkins.com/">Cap</a>.</p>
 </footer>
 <div id="add" class="overlay" style="display:none;">

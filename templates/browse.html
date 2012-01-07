@@ -2,27 +2,10 @@
 
 {% block content %}
 	<nav>
-		<h1>{% block title %}Browse Noms{% endblock %}</h1>
+		<h1>{% block title %}Browse Recipes{% endblock %}</h1>
 		<div class="paper white">
 			{% include "recipes.html" %}
 		</div>
 	</nav>
-	<section class="col2 profile">
-		<section>
-			<h4>Recently viewed</h4>
-			<ol>
-			{% for recipe in viewed_recipes %}
-				<li><a href="/{{ recipe.owner }}/{{ recipe.slug }}/" class="nom">{{ recipe.name }}</a> <a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a></li>
-			{% endfor %}
-			</ol>
-		</section>
-		<section>
-			<h4>Newest noms</h4>
-			<ol>
-			{% for recipe in newest_recipes %}
-				<li><a href="/{{ recipe.owner }}/{{ recipe.slug }}/" class="nom">{{ recipe.name }}</a> <a href="/{{ recipe.owner }}/" class="user">@{{ recipe.owner }}</a></li>
-			{% endfor %}
-			</ol>
-		</section>
 	</section>
 {% endblock %}

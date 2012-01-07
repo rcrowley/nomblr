@@ -2,7 +2,7 @@
 
 {% block content %}
 	<nav>
-		<h1>{% block title %}Noms like &#8220;{{ form.cleaned_data.q }}&#8221;{% endblock %}</h1>
+		<h1>{% block title %}Recipes like &#8220;{{ form.cleaned_data.q }}&#8221;{% endblock %}</h1>
 		<div class="paper white">
 			{% with results as recipes %}
 				{% include "recipes.html" %}

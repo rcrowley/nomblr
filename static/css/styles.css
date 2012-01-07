@@ -43,7 +43,9 @@ menu {
 	padding: 0;
 }
 
-menu li { float: left; }
+menu li { display:inline; }
+
+.fright { float:right; }
 
 .clear { clear: both; }
 
@@ -246,7 +248,7 @@ form .note:hover {
 /* Follow Buttons */
 
 .follow, .following {
-	background: #c3cd9e;
+	background: #c7df71;
 	border: 1px solid #b6be8f;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -261,7 +263,7 @@ form .note:hover {
 	color: #293207;
 	text-decoration: none;
 }
-.follow:active { background: #b6be8f; }
+.follow:active { background: #b3c66f; }
 
 .following { opacity: .5; }
 .following .unfollow { display: none; }
@@ -301,7 +303,7 @@ form .note:hover {
 	margin-bottom: 45px;
 	text-indent: -100000px;
 }
-#splah h3 { font-size: 18px; }
+#splash h3 { font-size: 18px; }
 
 #content #splash .paper.white {
 	height: 315px;
@@ -350,7 +352,7 @@ form .note:hover {
 
 .nav, #content {
 	margin: 0 auto;
-	width: 960px;
+	width: 740px;
 }
 
 /* Nav Bar */
@@ -388,9 +390,17 @@ body > header {
 	width: 79px;
 }
 
-.nav menu { display: inline-block; }
+.nav menu { 
+	display: inline-block;
+	position:relative;
+	top:2px;
+}
 
 .nav li { margin-right: 30px; }
+
+.nav li:last-child{
+	margin-right:0;
+}
 
 .nav a {
 	color: #fff;
@@ -398,24 +408,80 @@ body > header {
 	font-weight: bold;
 	text-shadow: 0 -1px 2px rgba(70, 83, 31, .9);
 }
+
+.nav a:hover{
+	text-decoration:none;
+}
+
+.nav a:active{
+	padding-top:2px;
+	position:relative;
+	top:2px;
+}
+
 .nav a.selected {
 	color: #2a3107;
 	cursor: default;
 	text-shadow: 0 1px rgba(255, 255, 255, .3);
 }
+
 .nav a.selected:hover { text-decoration: none; }
+
+.nav a.selected:active { padding:0; top:0; }
 
 .nav .add {
 	background: url(/static/images/global/nav_add.png) 0 -97px no-repeat;
-	padding-left: 13px;
+	padding-left: 15px;
 }
 .nav .add.selected { background-position: 0 3px; }
 
-/* TODO This element drops down 20px in Chromium. */
-.nav form { 
+.nav .nav-r{
 	position:absolute;
 	right:0;
 	top:12px;
+}
+
+.nav .nav-r form{
+	display:inline-block;
+}
+
+.nav .acct{
+	border-right:1px solid #8aa259;
+	margin-right:0;
+	padding-right:15px;
+}
+
+.nav .acct a{
+	background:url(/static/images/global/nav_add.png) 0 -200px no-repeat;
+	display:inline-block;
+	height:17px;
+	text-indent:-10000px;
+	width:17px;
+}
+
+.nav .acct a:active{
+	padding-top:0;
+}
+
+.nav .acct .selected{
+	background-position:0 -300px;
+}
+
+.nav input[type="submit"].logout{
+	background:url(/static/images/global/nav_add.png) 0 -400px no-repeat;
+	cursor:pointer;
+	display:inline-block;
+	height:18px;
+	margin-left:13px;
+	position:relative;
+	text-indent:-10000px;
+	top:2px;
+	width:12px;
+}
+
+.nav input[type="submit"].logout:active{
+	position:relative;
+	top:4px;
 }
 
 .nav input[type="text"] {
@@ -505,9 +571,9 @@ body > footer {
 	color: #5c330b;
 	font-size: 12px;
 	font-weight: bold;
-	margin: 125px auto 30px;
+	margin: 50px auto 30px;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.3);
-	width: 960px;
+	width: 740px;
 }
 body > footer p {
 	display: inline;

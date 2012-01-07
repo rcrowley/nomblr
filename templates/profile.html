@@ -2,13 +2,19 @@
 
 {% block content %}
 	<nav>
-		<h1>{% block title %}Noms from @{{ owner }}{% endblock %}</h1>
+		<h1>{% block title %}{% if owner != request.user %}Recipes by {{ owner }}{% else %}Your Recipes{% endif %}{% endblock %}
+		{% if owner != request.user %}
+			{% if owner in request.user.following %}{# FIXME #}
+				<a href="/{{ owner }}/follow/" class="follow" style="display: none;">+ Follow</a>
+				<a href="/{{ owner }}/unfollow/" class="following"><span class="static">Following</span> <span class="unfollow">Unfollow</span></a>
+			{% endif %}
+		{% endif %}
+		</h1>
 		<div class="paper white">
 			{% if owner != request.user and owner not in request.user.following %}{# FIXME #}
-				<div class="paper_top">Like @{{ owner }}&#8217;s noms? <a href="follow/" class="follow">+ follow {{ owner }}</a></div>
+				<div class="paper_top">Like @{{ owner }}&#8217;s noms? <a href="follow/" class="follow">+ Follow {{ owner }}</a></div>
 			{% endif %}
 			{% include "recipes.html" %}
 		</div>
 	</nav>
-	{% include "profile_aside.html" %}
 {% endblock %}
